@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../layouts/template.xhtml">
+
+<ui:define name="titre">
+    <h:outputText value="Ajout d'un utilisateur" />
+
+</ui:define>
+
+<ui:define name="content">
+
+    <h:form>
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+
+        <p:wizard flowListener="#{serviceUtilisateur.onFlowProcess}">
+            <p:tab id="personal" title="Utilisateur">
+                <p:panel header="Utilisateur">
+                    <h:panelGrid columns="1" columnClasses="label, value">
+                        <p:outputLabel value="Pseudo : " />
+                        <p:inputText id="Ps" value="#{serviceUtilisateur.u.pseudo}" validator="#{controlUtilLogin.ValidatePseudo}" />
+                        <p:message for="Ps"/>
+
+                        <p:outputLabel value="Mot de passe :*" />
+                        <p:password id="pwd" value="#{serviceUtilisateur.u.mdp1}" feedback="true" />
+                        <p:message for="pwd" message="text"/>
+
+                        <p:outputLabel value="Nom :*" />
+                        <p:inputText id="n" value="#{serviceUtilisateur.u.nom}"  label="Nom"/>
+                        <p:message for="n" message="text"/>
+
+                        <p:outputLabel value="Prénom :*" />
+                        <p:inputText id="p" value="#{serviceUtilisateur.u.prenom}" label="Prénom"/>
+                        <p:message for="p" message="text"/>
+
+                        <!--<p:outputLabel value="Passer : " />
+        <!--<h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />
+        </h:panelGrid>
+        </p:panel>
+        </p:tab>
+
+<p:tab id="address" title="Addresse">
+<p:panel header="Addresse ">
+    <h:panelGrid columns="1" columnClasses="label, value">
+        <p:outputLabel value="Groupe Social :*" />
+        <p:inputText value="#{serviceUtilisateur.u.groupeSocial}" label="Groupe Social"/>
+
+        <p:outputLabel value="Email :*" />
+        <p:inputText value="#{serviceUtilisateur.u.email}"  label="Email"/>
+
+        <p:outputLabel value="Profil :*" />
+        <p:inputText id="pr" value="#{serviceUtilisateur.u.profil}"  label="Profil"/>
+        <p:message for="pr" message="text"/>
+
+        <!--<p:outputLabel value="Passer : " />
+        <!--<h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />
+    </h:panelGrid>
+</p:panel>
+</p:tab>
+
+<p:tab id="confirm" title="Confirmation">
+<p:panel header="Confirmation">
+    <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid">
+        <h:panelGrid columns="2" columnClasses="label, value">
+            <h:outputText value="Pseudo : " />
+            <h:outputText value="#{serviceUtilisateur.u.pseudo}" styleClass="outputLabel"/>
+
+            <h:outputText value="Nom : " />
+            <h:outputText value="#{serviceUtilisateur.u.nom}" styleClass="outputLabel"/>
+
+            <h:outputText value="Prénom : " />
+            <h:outputText value="#{serviceUtilisateur.u.prenom}" styleClass="outputLabel"/>
+
+        </h:panelGrid>
+
+        <h:panelGrid columns="2" columnClasses="label, value">
+            <h:outputText value="Groupe Social : " />
+            <h:outputText value="#{serviceUtilisateur.u.groupeSocial}" styleClass="outputLabel"/>
+
+            <h:outputText value="Email : " />
+            <h:outputText value="#{serviceUtilisateur.u.email}" styleClass="outputLabel"/>
+
+            <h:outputText value="Profil : " />
+            <h:outputText value="#{serviceUtilisateur.u.profil}" styleClass="outputLabel"/>
+        </h:panelGrid>
+
+    </h:panelGrid>
+
+    <p:commandButton value="Valider" actionListener="#{serviceUtilisateur.addUtilisateur}" update="growl"  icon="ui-icon-check"/>
+    <p:button value="Retour Accueil" outcome="/accueil.xhtml" icon="ui-icon-arrowreturn-1-w"/>
+</p:panel>
+</p:tab>
+        </p:wizard>
+        </h:form>
+        </ui:define>
+
+        </ui:composition>
+        </html>-->

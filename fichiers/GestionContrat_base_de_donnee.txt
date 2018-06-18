@@ -1,0 +1,266 @@
+Dictionnaire de données 
+
+Nom : id
+Code : ID
+Type : INT
+Taille : 25,
+Commentaire : 
+
+Nom : numero
+Code : NUMERO
+Type : INT
+Taille : 25,
+Commentaire : 
+
+Nom : libelle
+Code : LIBELLE
+Type : VARCHAR
+Taille : 25,
+Commentaire : 
+
+Nom : prestataire
+Code : PRESTATAIRE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : client
+Code : CLIENT
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : descriptif
+Code : DESCRIPTIF
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : modalites
+Code : MODALITES
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : datedesignature
+Code : DATEDESIGNATURE
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : id
+Code : ID
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : date
+Code : DATE
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : dateavenant
+Code : DATEAVENANT
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : cout
+Code : COUT
+Type : DECIMAL
+Taille : ,
+Commentaire : 
+
+Nom : prestation
+Code : PRESTATION
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : emeteur
+Code : EMETEUR
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : recepteur
+Code : RECEPTEUR
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : datefacture
+Code : DATEFACTURE
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : echeance
+Code : ECHEANCE
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : encaissement
+Code : ENCAISSEMENT
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : datedevis
+Code : DATEDEVIS
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : produit
+Code : PRODUIT
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : designation
+Code : DESIGNATION
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : prixunitaire
+Code : PRIXUNITAIRE
+Type : DECIMAL
+Taille : ,
+Commentaire : 
+
+Nom : tva
+Code : TVA
+Type : DECIMAL
+Taille : ,
+Commentaire : 
+
+Nom : prixtotal
+Code : PRIXTOTAL
+Type : DECIMAL
+Taille : ,
+Commentaire : 
+
+Nom : quantite
+Code : QUANTITE
+Type : INT
+Taille : ,
+Commentaire : 
+
+Nom : pseudo
+Code : PSEUDO
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : motdepasse
+Code : MOTDEPASSE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : nom
+Code : NOM
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : prenom
+Code : PRENOM
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : adresse
+Code : ADRESSE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : telephone
+Code : TELEPHONE
+Type : INT
+Taille : 25,
+Commentaire : 
+
+Nom : email
+Code : EMAIL
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : datedenaissance
+Code : DATEDENAISSANCE
+Type : DATE
+Taille : ,
+Commentaire : 
+
+Nom : role
+Code : ROLE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : siret
+Code : SIRET
+Type : INT
+Taille : 25,
+Commentaire : 
+
+Nom : qualification
+Code : QUALIFICATION
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : titre
+Code : TITRE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : Activité
+Code : ACTIVITÉ
+Type : VARCHAR
+Taille : 50,
+Commentaire : 
+
+Nom : Produit
+Code : PRODUIT
+Type : BOOL
+Taille : ,
+Commentaire : 
+
+Nom : prixunitaireProduit
+Code : PRIXUNITAIRE
+Type : DECIMAL
+Taille : ,
+Commentaire : 
+
+Nom : quantiteProduit
+Code : QUANTITE
+Type : INT
+Taille : ,
+Commentaire : 
+
+Nom : Prix/h
+Code : PRIX/H
+Type : DECIMAL
+Taille : ,
+Commentaire : 
+
+Nom : Heure totale
+Code : HEURE TOTALE
+Type : INT
+Taille : ,
+Commentaire : 
+
+Nom : Description
+Code : DESCRIPTION
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+

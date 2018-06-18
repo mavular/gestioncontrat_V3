@@ -1,0 +1,44 @@
+html{
+    background-color: #eee;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.header {
+    padding: 20px;
+
+}
+
+.content{
+    padding: 20px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.login{
+    text-align: right;
+    line-height: 39px;
+}
+
+h1{
+    text-transform: uppercase;
+}
+
+h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    width: 30%;
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    list-style-type:none
+}
+
