@@ -1,10 +1,6 @@
 package com.afpa.model;
 
 public class DataColumn {
-}
-/*package com.afpa.model;
-
-public class DataColumn {
 
     private String header;
 
@@ -19,4 +15,4 @@ public class DataColumn {
     public void setHeader(String header) {
         this.header = header;
     }
-} */
+}

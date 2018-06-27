@@ -13,17 +13,43 @@
 </h:head>
 <h:body>
     <div align="center" style="color:blue;font-family:cursive" >
-        <h1>REMPLIR LA FICHE DE CONTRAT</h1>
+        <h1>VEUILLEZ RENSEIGNER VOS IDENTIFIANTS</h1>
     </div>
-    <p:growl id="msg" showDetail="true" />
 
+    <div align="center" style="height:500px">
     <h:form>
-        <p:outputPanel align="left">
-            <h:outputText
-        </p:outputPanel>
-    </h:form>
+    <p:growl id="msgs" showDetail="true" />
 
-     
+            <p:panel id="toggleable" header="SE CONNECTER" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+                <p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />
+                <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />
+
+                <h:panelGrid columns="2" cellpadding="10">
+                    <h:outputLabel for="username" value="Pseudo : " />
+                    <p:inputText id="username" value="" required="true" label="pseudo" />
+                    <h:outputLabel for="password" value="Mot de passe : " />
+                    <p:password id="password" value="" required="true" label="password" />
+                    <f:facet name="footer">
+                        <p:commandButton style="color: lime" value="VALIDER" icon="ui-icon-check"/>
+                        <span style="margin: auto"></span>
+                        <p:commandButton style="color: blue" value="ACCUEIL" outcome="/layouts/template.xhtml?faces-redirect=true" icon="ui-icon-check"/>
+                        <!--<p:commandButton style="color: lime" value="Login" oncomplete="PF('dlg1').hide();" update="connect,messages" icon="ui-icon-check" />-->
+                    </f:facet>
+                </h:panelGrid>
+
+                <f:facet name="options">
+                    <p:menu>
+                        <p:submenu label="Settings">
+                            <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
+                            <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
+                        </p:submenu>
+                    </p:menu>
+                </f:facet>
+            </p:panel>
+
+    </h:form>
+    </div>
+
      </h:body>
 
 

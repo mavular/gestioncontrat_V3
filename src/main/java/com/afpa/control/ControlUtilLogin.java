@@ -1,8 +1,4 @@
-package com.afpa.control;
-
-public class ControlUtilLogin {
-}
-/*package com.afpa.Control;
+/*package com.afpa.control;
 
 import com.afpa.access.AccessDb;
 import com.afpa.model.Utilisateur;
@@ -25,8 +21,7 @@ import java.util.logging.Logger;
 
 @Named
 @SessionScoped
-public class ControlUtilLogin implements Serializable
-{
+public class ControlUtilLogin implements Serializable{
 
     @Inject
     private AccessDb adb;
@@ -143,3 +138,4 @@ public class ControlUtilLogin implements Serializable
     }
 }
 */
+

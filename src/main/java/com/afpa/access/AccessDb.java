@@ -1,14 +1,9 @@
 package com.afpa.access;
 
-public class AccessDb {
-}
-/*package com.afpa.access;
-
 import com.afpa.model.DataColumn;
-import com.afpa.model.Reservation;
-import com.afpa.model.Salle;
+
 import com.afpa.model.Utilisateur;
-import com.afpa.model.interfaces.Reservable;
+
 import com.afpa.model.interfaces.User;
 
 import javax.faces.view.ViewScoped;
@@ -74,21 +69,8 @@ public class AccessDb implements Serializable {
        // return em.createQuery("SELECT a from " + t.getSimpleName() + " a").getResultList();
     }
 
-    public List<Reservation> findAllForSalle(Reservable r){
-        Query q= em.createNamedQuery("Reservation.findAllActiveForSalle");
-        q.setParameter("salle", r);
-        q.setParameter("etat", false);
-        return q.getResultList();
-    }
-
-    public List<Reservation> findAllReservationsForUser(Utilisateur u){
-        Query q = em.createNamedQuery("Utilisateur.findAllReservationsForUser");
-        q.setParameter("utilisateur", u);
-        return q.getResultList();
-    }
-
-    //création d'une liste de salle par une requête nomée
-    public List<Salle> getAllSalle(){ return em.createNamedQuery("Salle.finAll",Salle.class).getResultList();}
+    //création d'une liste d'utilisateurs par une requête nomée par l'Administrateur
+    public List<Utilisateur> getAllUtilisateurs(){ return em.createNamedQuery("Utilisateur.finAll",Utilisateur.class).getResultList();}
 
 
     public List<Class> getAllClass(){
@@ -97,10 +79,9 @@ public class AccessDb implements Serializable {
         //on récupère la liste des classes qui sont annotées @Entity
         List<EntityType<?>> listType = new ArrayList<>(em.getMetamodel().getEntities());
 
-        //on effectue un trie pour ne remonter que ce qui est interfacé User et Reservable
+        //on effectue un trie pour ne remonter que ce qui est interfacé User et ...
         for(EntityType et : listType){
-            if( Arrays.asList(et.getJavaType().getInterfaces()).contains(User.class) || Arrays.asList(et.getJavaType()
-                    .getInterfaces()).contains(Reservable.class) ){
+            if( Arrays.asList(et.getJavaType().getInterfaces()).contains(User.class)){
                 listCass.add(et.getBindableJavaType());
             }
         }
@@ -121,4 +102,3 @@ public class AccessDb implements Serializable {
         return listcm;
     }
 }
-*/

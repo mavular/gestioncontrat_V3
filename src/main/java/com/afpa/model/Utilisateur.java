@@ -1,9 +1,5 @@
 package com.afpa.model;
 
-public class Utilisateur {
-}
-/* package com.afpa.model;
-
 import com.afpa.model.interfaces.User;
 import com.google.common.hash.Hashing;
 
@@ -17,16 +13,21 @@ import java.nio.charset.StandardCharsets;
 @NamedQueries({
         @NamedQuery(name="Utilisateur.findbyPseudo", query = "SELECT u FROM Utilisateur u WHERE u.pseudo = :pseudo"),
         @NamedQuery(name = "Utilisateur.findByMotdepasse", query = "SELECT u FROM Utilisateur u WHERE u.motdepasse = :motdepasse"),
-        @NamedQuery(name= "Utilisateur.findAllReservationsForUser", query = "select r FROM Reservation r WHERE r.utilisateur = :utilisateur")
+        //@NamedQuery(name= "Utilisateur.findAllContratForUser", query = "select c FROM Contrat c WHERE c.utilisateur = :utilisateur")
+        //@NamedQuery(name= "Utilisateur.findAllFactureForUser", query = "select f FROM Contrat f WHERE f.utilisateur = :utilisateur")
+        //@NamedQuery(name= "Utilisateur.findAllDevisForUser", query = "select d FROM Contrat d WHERE d.utilisateur = :utilisateur")
 })
 
 public class Utilisateur implements User, Serializable
 {
     @Id
+    private int id;
+
+    @Column(name="pseudo")
     private String pseudo;
 
     //@OneToMany(mappedBy = "pseudo", cascade = CascadeType.ALL)
-    //private List<Reservation> lesreservation;
+    //private List<Contrat> lescontrats;
 
     @Pattern(regexp = "^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ\\s-]{1,30})$", message = "Le nom doit comporter que des caractères")
     private String nom;
@@ -39,25 +40,27 @@ public class Utilisateur implements User, Serializable
     @Column(name="motdepasse")
     private String motdepasse;
 
-    @Column(name="groupeSocial")
+    @Transient
     private String groupeSocial;
 
     @Pattern(regexp = "^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ\\s-]{1,30})$",
             message = "Le profil doit comporter que des caractères")
-    private String profil;
+    @Column(name = "role")
+    private String role;
 
     private String email;
 
     public Utilisateur()
     {}
 
-    public Utilisateur(String pseudo, String nom, String prenom, String groupesocial, String profil, String email,String motdepasse)
+    public Utilisateur(int id, String pseudo, String nom, String prenom, String groupesocial, String profil, String email,String motdepasse)
     {
+        this.id = id;
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
         this.motdepasse = motdepasse;
-        this.profil = profil;
+        this.role = role;
         this.email = email;
         this.groupeSocial = groupesocial;
     }
@@ -102,12 +105,12 @@ public class Utilisateur implements User, Serializable
         this.motdepasse = motdepasse;
     }
 
-    public String getProfil() {
-        return profil;
+    public String getRole() {
+        return role;
     }
 
-    public void setProfil(String profil) {
-        this.profil = profil;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -131,4 +134,3 @@ public class Utilisateur implements User, Serializable
         return pseudo;
     }
 }
- */

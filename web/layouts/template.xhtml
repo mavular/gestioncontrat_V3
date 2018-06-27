@@ -2,86 +2,107 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
-
-<!-- <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-    <title>Reservation Salle</title>
+    <title>PROJET GESTION DES CONTRATS</title>
     <h:outputStylesheet library="css" name="style.css" />
 </h:head>
-
 <h:body>
+
     <div class="container">
-        <div class="ui-g header">
+        <div class="ui-g content">
+
             <div class="ui-g-6">
-                <h1><p:link id="titre" value="Reservation Salle" outcome="/accueil.xhtml" /></h1>
-            </div>
-            <div class="ui-g-6">
-                <ui:insert name="login"/>
+                <p:layout fullPage="true" toggleable="true" closable="true" collapsible="true">
+                <p:layoutUnit position="north" size="100" header="Le site de création de contrats, de factures et de devis" resizable="true" >
+                    <p:layout style="min-width:400px;min-height:200px;">
+                        <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+                            West
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="center">
+                            Center
+                        </p:layoutUnit>
+                    </p:layout>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" size="100" resizable="true">
+
+                </p:layoutUnit>
+                <p:layoutUnit position="center" size="100" resizable="true">
+
+                    <p:layoutUnit position="west" size="200" resizable="true">
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center" size="100" resizable="true">
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="east" size="200" resizable="true" effect="drop">
+                    </p:layoutUnit>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" resizable="true">
+                    <h:outputText value="South unit content." />
+                </p:layoutUnit>
+                </p:layout>
             </div>
         </div>
+        <!--
         <div class="ui-g content">
             <div class="ui-g-12 ui-md-3">
 
-                -- Login utilisateur --
-<ui:insert name="sidebar" >
-<p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+                 Login utilisateur
+                <ui:insert name="sidebar" >
+                    <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
 
-<h:panelGroup id="connect">
-    -- Bouton connexion / déconnexion --
-    <p:commandButton process="@this" style="color: lime" value="#{controlUtilLogin.connectlabel}" actionListener="#{controlUtilLogin.show}" update="messages,connect" icon="ui-icon-person" />
+                    <h:panelGroup id="connect">
+                        Bouton connexion / déconnexion
+                        <p:commandButton process="@this" style="color: lime" value="#{controlUtilLogin.connectlabel}" actionListener="#{controlUtilLogin.show}" update="messages,connect" icon="ui-icon-person" />
 
-    --Bouton Créer un compte utilisateur : visible uniquement pour les admin --
-    <p:button rendered="#{controlUtilLogin.getU().profil eq 'admin'}" value="Création Compte" outcome="/admin/NewUtil.xhtml" icon="ui-icon-person"/>
+                        Bouton Créer un compte utilisateur : visible uniquement pour les admin
+                        <p:button rendered="#{controlUtilLogin.getU().profil eq 'admin'}" value="Création Compte" outcome="/admin/NewUtil.xhtml" icon="ui-icon-person"/>
 
-    --Bouton Créer un compte utilisateur : visible uniquement pour les admin --
-    <p:button rendered="#{controlUtilLogin.getU().profil eq 'admin'}" value="Administration" outcome="/admin/admin.xhtml" icon="ui-icon-pencil"/>
+                        Bouton Créer un compte utilisateur : visible uniquement pour les admin
+                        <p:button rendered="#{controlUtilLogin.getU().profil eq 'admin'}" value="Administration" outcome="/admin/admin.xhtml" icon="ui-icon-pencil"/>
 
-    -- Bouton mes réservations : visible par les utilisateurs connectés --
-    <p:button rendered="#{serviceUtilisateur.getCurrentUtilisateur() != null}" value="Mes réservations" outcome="/protected/mesReservations.xhtml?faces-redirect=true" icon="ui-icon-calendar"/>
-</h:panelGroup>
--- Boîte de dialog login --
-<p:dialog header="Login" widgetVar="dlg1" resizable="false">
-    <h:form>
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="username" value="Login:" />
-            <p:inputText id="username" value="#{controlUtilLogin.u.pseudo}" required="true" label="pseudo" />
+                         Bouton mes réservations : visible par les utilisateurs connectés
+                        <p:button rendered="#{serviceUtilisateur.getCurrentUtilisateur() != null}" value="Mes réservations" outcome="/protected/mesReservations.xhtml?faces-redirect=true" icon="ui-icon-calendar"/>
+                    </h:panelGroup>
+                    Boîte de dialog login
+                    <p:dialog header="Login" widgetVar="dlg1" resizable="false">
+                        <h:form>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputLabel for="username" value="Login:" />
+                                <p:inputText id="username" value="#{controlUtilLogin.u.pseudo}" required="true" label="pseudo" />
 
-            <h:outputLabel for="password" value="Mot de passe:" />
-            <p:password id="password" value="#{controlUtilLogin.u.motdepasse}" required="true" label="password" />
+                                <h:outputLabel for="password" value="Mot de passe:" />
+                                <p:password id="password" value="#{controlUtilLogin.u.motdepasse}" required="true" label="password" />
 
-            <f:facet name="footer">
-                <p:commandButton style="color: lime" value="Login" actionListener="#{controlUtilLogin.logIn()}" oncomplete="PF('dlg1').hide();" update="connect,messages" icon="ui-icon-check" />
-            </f:facet>
+                                <f:facet name="footer">
+                                    <p:commandButton style="color: lime" value="Login" actionListener="#{controlUtilLogin.logIn()}" oncomplete="PF('dlg1').hide();" update="connect,messages" icon="ui-icon-check" />
+                                </f:facet>
 
-        </h:panelGrid>
-    </h:form>
-</p:dialog>
-</ui:insert>
-        -- Fin Login utilisateur --
+                            </h:panelGrid>
+                        </h:form>
+                    </p:dialog>
+                </ui:insert>
+                Fin Login utilisateur
+            </div>
+            <div class="ui-g-12 ui-md-9 ui-g-nopad">
+                <div class="ui-g-12 ui-g-nopad">
+                    <h2><ui:insert name="titre" /></h2>
+                    <ui:insert name="content" />
+                </div>
+            </div>
         </div>
-<div class="ui-g-12 ui-md-9 ui-g-nopad">
-<div class="ui-g-12 ui-g-nopad">
-    <h2><ui:insert name="titre" /></h2>
-    <ui:insert name="content" />
-</div>
-</div>
-        </div>
-        </div>
-        </h:body>
-        </html>-->
+        -->
+    </div>
+</h:body>
+</html>
+

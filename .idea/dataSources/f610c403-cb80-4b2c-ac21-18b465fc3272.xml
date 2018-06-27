@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@localhost">
+<dataSource name="gestioncontrat@localhost">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -13,6 +13,7 @@
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="4" parent="1" name="gestioncontrat">
+      <Current>1</Current>
       <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
@@ -988,781 +989,892 @@
     <table id="250" parent="4" name="avenant">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="251" parent="4" name="contrat">
+    <table id="251" parent="4" name="composer">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="252" parent="4" name="date">
+    <table id="252" parent="4" name="contrat">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="253" parent="4" name="devis">
+    <table id="253" parent="4" name="date">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="254" parent="4" name="entreprise">
+    <table id="254" parent="4" name="devis">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="255" parent="4" name="facturation">
+    <table id="255" parent="4" name="entreprise">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="256" parent="4" name="interesser">
+    <table id="256" parent="4" name="facturation">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="257" parent="4" name="prestation">
+    <table id="257" parent="4" name="facturer">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="258" parent="4" name="representant">
+    <table id="258" parent="4" name="interesser">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="259" parent="4" name="signer">
+    <table id="259" parent="4" name="prestation">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="260" parent="4" name="typecontrat">
+    <table id="260" parent="4" name="produit">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="261" parent="4" name="utilisateur">
+    <table id="261" parent="4" name="representant">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="262" parent="247" name="id">
+    <table id="262" parent="4" name="signer">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="263" parent="4" name="typecontrat">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="264" parent="4" name="utilisateur">
+      <Engine>InnoDB</Engine>
+    </table>
+    <column id="265" parent="247" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="247" name="nom">
+    <column id="266" parent="247" name="nom">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="247" name="prenom">
+    <column id="267" parent="247" name="prenom">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="247" name="coeficient">
+    <column id="268" parent="247" name="coeficient">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="266" parent="247" name="PRIMARY">
+    <key id="269" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="267" parent="248" name="id">
+    <column id="270" parent="248" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="248" name="nom">
+    <column id="271" parent="248" name="nom">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="248" name="prenom">
+    <column id="272" parent="248" name="prenom">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="248" name="groupe">
+    <column id="273" parent="248" name="groupe">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="271" parent="248" name="PRIMARY">
+    <key id="274" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="272" parent="249" name="id">
+    <column id="275" parent="249" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="249" name="date">
+    <column id="276" parent="249" name="date">
       <Position>2</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="249" name="note">
+    <column id="277" parent="249" name="note">
       <Position>3</Position>
       <DataType>decimal(10,2)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="249" name="idcours">
+    <column id="278" parent="249" name="idcours">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="249" name="idetu">
+    <column id="279" parent="249" name="idetu">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="277" parent="249" name="note_cours_id_fk">
+    <index id="280" parent="249" name="note_cours_id_fk">
       <ColNames>idcours</ColNames>
     </index>
-    <index id="278" parent="249" name="note_etudiant_id_fk">
+    <index id="281" parent="249" name="note_etudiant_id_fk">
       <ColNames>idetu</ColNames>
     </index>
-    <key id="279" parent="249" name="PRIMARY">
+    <key id="282" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="280" parent="249" name="note_cours_id_fk">
+    <foreign-key id="283" parent="249" name="note_cours_id_fk">
       <ColNames>idcours</ColNames>
       <RefSchemaName>calculmoyenne</RefSchemaName>
       <RefTableName>cours</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="281" parent="249" name="note_etudiant_id_fk">
+    <foreign-key id="284" parent="249" name="note_etudiant_id_fk">
       <ColNames>idetu</ColNames>
       <RefSchemaName>calculmoyenne</RefSchemaName>
       <RefTableName>etudiant</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="282" parent="250" name="id">
+    <column id="285" parent="250" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="250" name="modalites">
+    <column id="286" parent="250" name="modalites">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="250" name="dateavenant">
+    <column id="287" parent="250" name="dateavenant">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="250" name="id_contrat">
+    <column id="288" parent="250" name="id_contrat">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="286" parent="250" name="avenant_contrat_FK">
+    <index id="289" parent="250" name="avenant_contrat_FK">
       <ColNames>id_contrat</ColNames>
     </index>
-    <key id="287" parent="250" name="PRIMARY">
+    <key id="290" parent="250" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="250" name="avenant_contrat_FK">
+    <foreign-key id="291" parent="250" name="avenant_contrat_FK">
       <ColNames>id_contrat</ColNames>
       <RefSchemaName>gestioncontrat</RefSchemaName>
       <RefTableName>contrat</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="289" parent="251" name="id">
+    <column id="292" parent="251" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="251" name="numero">
+    <column id="293" parent="251" name="id_devis">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="251" name="libelle">
-      <Position>3</Position>
-      <DataType>varchar(25)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="292" parent="251" name="prestataire">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="293" parent="251" name="client">
-      <Position>5</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="294" parent="251" name="descriptif">
-      <Position>6</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="295" parent="251" name="modalites">
-      <Position>7</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="296" parent="251" name="id_typecontrat">
-      <Position>8</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="297" parent="251" name="date">
-      <Position>9</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="298" parent="251" name="date_finir">
-      <Position>10</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="299" parent="251" name="date_signer">
-      <Position>11</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="300" parent="251" name="id_produit">
-      <Position>12</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="301" parent="251" name="contrat_typecontrat_FK">
-      <ColNames>id_typecontrat</ColNames>
-    </index>
-    <index id="302" parent="251" name="contrat_date0_FK">
-      <ColNames>date</ColNames>
-    </index>
-    <index id="303" parent="251" name="contrat_date1_FK">
-      <ColNames>date_finir</ColNames>
-    </index>
-    <index id="304" parent="251" name="contrat_date2_FK">
-      <ColNames>date_signer</ColNames>
-    </index>
-    <index id="305" parent="251" name="contrat_produit3_FK">
-      <ColNames>id_produit</ColNames>
-    </index>
-    <key id="306" parent="251" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="307" parent="251" name="contrat_typecontrat_FK">
-      <ColNames>id_typecontrat</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>typecontrat</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="308" parent="251" name="contrat_date0_FK">
-      <ColNames>date</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>date</RefTableName>
-      <RefColNames>date</RefColNames>
-    </foreign-key>
-    <foreign-key id="309" parent="251" name="contrat_date1_FK">
-      <ColNames>date_finir</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>date</RefTableName>
-      <RefColNames>date</RefColNames>
-    </foreign-key>
-    <foreign-key id="310" parent="251" name="contrat_date2_FK">
-      <ColNames>date_signer</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>date</RefTableName>
-      <RefColNames>date</RefColNames>
-    </foreign-key>
-    <foreign-key id="311" parent="251" name="contrat_produit3_FK">
-      <ColNames>id_produit</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>prestation</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="312" parent="252" name="date">
-      <Position>1</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="313" parent="252" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>date</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="314" parent="253" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="315" parent="253" name="numero">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="316" parent="253" name="libelle">
-      <Position>3</Position>
-      <DataType>varchar(25)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="317" parent="253" name="emeteur">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="318" parent="253" name="recepteur">
-      <Position>5</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="319" parent="253" name="prestation">
-      <Position>6</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="320" parent="253" name="datedevis">
-      <Position>7</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="321" parent="253" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="322" parent="254" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="323" parent="254" name="nom">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="324" parent="254" name="siret">
-      <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="325" parent="254" name="qualification">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="326" parent="254" name="adresse">
-      <Position>5</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="327" parent="254" name="telephone">
-      <Position>6</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="328" parent="254" name="email">
-      <Position>7</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="329" parent="254" name="id_representant">
-      <Position>8</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="330" parent="254" name="entreprise_representant_FK">
-      <ColNames>id_representant</ColNames>
-    </index>
-    <key id="331" parent="254" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="332" parent="254" name="entreprise_representant_FK">
-      <ColNames>id_representant</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>representant</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="333" parent="255" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="334" parent="255" name="numero">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="335" parent="255" name="libelle">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="336" parent="255" name="emeteur">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="337" parent="255" name="recepteur">
-      <Position>5</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="338" parent="255" name="produit">
-      <Position>6</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="339" parent="255" name="datefacture">
-      <Position>7</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="340" parent="255" name="echeance">
-      <Position>8</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="341" parent="255" name="modalites">
-      <Position>9</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="342" parent="255" name="encaissement">
-      <Position>10</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="343" parent="255" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="344" parent="256" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="345" parent="256" name="id_utilisateur">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="346" parent="256" name="interesser_utilisateur0_FK">
-      <ColNames>id_utilisateur</ColNames>
-    </index>
-    <key id="347" parent="256" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id
-id_utilisateur</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="348" parent="256" name="interesser_contrat_FK">
-      <ColNames>id</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>contrat</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="349" parent="256" name="interesser_utilisateur0_FK">
-      <ColNames>id_utilisateur</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>utilisateur</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="350" parent="257" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="351" parent="257" name="designation">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="352" parent="257" name="prixunitaireproduit">
-      <Position>3</Position>
-      <DataType>decimal(10)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="353" parent="257" name="tva">
-      <Position>4</Position>
-      <DataType>decimal(10)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="354" parent="257" name="prixtotal">
-      <Position>5</Position>
-      <DataType>decimal(10)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="355" parent="257" name="quantiteproduit">
-      <Position>6</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="356" parent="257" name="id_facturation">
-      <Position>7</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="357" parent="257" name="id_devis">
-      <Position>8</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="358" parent="257" name="activite">
-      <Position>9</Position>
-      <DataType>varchar(50)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="359" parent="257" name="produit">
-      <Position>10</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="360" parent="257" name="heuretotale">
-      <Position>11</Position>
-      <DataType>int(11)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="361" parent="257" name="description">
-      <Position>12</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="362" parent="257" name="prixhoraire">
-      <Position>13</Position>
-      <DataType>decimal(10)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="363" parent="257" name="produit_facturation_FK">
-      <ColNames>id_facturation</ColNames>
-    </index>
-    <index id="364" parent="257" name="produit_devis0_FK">
+    <index id="294" parent="251" name="composer_devis0_FK">
       <ColNames>id_devis</ColNames>
     </index>
-    <key id="365" parent="257" name="PRIMARY">
+    <key id="295" parent="251" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>id
+id_devis</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="366" parent="257" name="produit_facturation_FK">
-      <ColNames>id_facturation</ColNames>
+    <foreign-key id="296" parent="251" name="composer_produit_FK">
+      <ColNames>id</ColNames>
       <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>facturation</RefTableName>
+      <RefTableName>produit</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="367" parent="257" name="produit_devis0_FK">
+    <foreign-key id="297" parent="251" name="composer_devis0_FK">
       <ColNames>id_devis</ColNames>
       <RefSchemaName>gestioncontrat</RefSchemaName>
       <RefTableName>devis</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="368" parent="258" name="id">
+    <column id="298" parent="252" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="369" parent="258" name="nom">
+    <column id="299" parent="252" name="numero">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="370" parent="258" name="titre">
+    <column id="300" parent="252" name="libelle">
       <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(25)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="258" name="prenom">
+    <column id="301" parent="252" name="prestataire">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="372" parent="258" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="373" parent="259" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="374" parent="259" name="id_contrat">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="375" parent="259" name="signer_contrat0_FK">
-      <ColNames>id_contrat</ColNames>
-    </index>
-    <key id="376" parent="259" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id
-id_contrat</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="377" parent="259" name="signer_entreprise_FK">
-      <ColNames>id</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>entreprise</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="378" parent="259" name="signer_contrat0_FK">
-      <ColNames>id_contrat</ColNames>
-      <RefSchemaName>gestioncontrat</RefSchemaName>
-      <RefTableName>contrat</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="379" parent="260" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="380" parent="260" name="libelle">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="381" parent="260" name="descriptif">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="382" parent="260" name="modalites">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="383" parent="260" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="384" parent="261" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="385" parent="261" name="pseudo">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="386" parent="261" name="motdepasse">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="387" parent="261" name="nom">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="388" parent="261" name="prenom">
+    <column id="302" parent="252" name="client">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="389" parent="261" name="adresse">
+    <column id="303" parent="252" name="descriptif">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="390" parent="261" name="telephone">
+    <column id="304" parent="252" name="modalites">
       <Position>7</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="391" parent="261" name="email">
-      <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="392" parent="261" name="datedenaissance">
+    <column id="305" parent="252" name="id_typecontrat">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="306" parent="252" name="date">
       <Position>9</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="393" parent="261" name="role">
+    <column id="307" parent="252" name="date_finir">
+      <Position>10</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="252" name="date_signer">
+      <Position>11</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="252" name="id_produit">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="310" parent="252" name="contrat_typecontrat_FK">
+      <ColNames>id_typecontrat</ColNames>
+    </index>
+    <index id="311" parent="252" name="contrat_date0_FK">
+      <ColNames>date</ColNames>
+    </index>
+    <index id="312" parent="252" name="contrat_date1_FK">
+      <ColNames>date_finir</ColNames>
+    </index>
+    <index id="313" parent="252" name="contrat_date2_FK">
+      <ColNames>date_signer</ColNames>
+    </index>
+    <index id="314" parent="252" name="contrat_produit3_FK">
+      <ColNames>id_produit</ColNames>
+    </index>
+    <key id="315" parent="252" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="316" parent="252" name="contrat_typecontrat_FK">
+      <ColNames>id_typecontrat</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>typecontrat</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="317" parent="252" name="contrat_date0_FK">
+      <ColNames>date</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>date</RefTableName>
+      <RefColNames>date</RefColNames>
+    </foreign-key>
+    <foreign-key id="318" parent="252" name="contrat_date1_FK">
+      <ColNames>date_finir</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>date</RefTableName>
+      <RefColNames>date</RefColNames>
+    </foreign-key>
+    <foreign-key id="319" parent="252" name="contrat_date2_FK">
+      <ColNames>date_signer</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>date</RefTableName>
+      <RefColNames>date</RefColNames>
+    </foreign-key>
+    <foreign-key id="320" parent="252" name="contrat_produit3_FK">
+      <ColNames>id_produit</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>prestation</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="321" parent="253" name="date">
+      <Position>1</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="322" parent="253" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>date</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="323" parent="254" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="324" parent="254" name="numero">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="325" parent="254" name="libelle">
+      <Position>3</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="326" parent="254" name="emeteur">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="327" parent="254" name="recepteur">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="328" parent="254" name="prestation">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="329" parent="254" name="datedevis">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="330" parent="254" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="331" parent="255" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="332" parent="255" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="333" parent="255" name="siret">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="334" parent="255" name="qualification">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="335" parent="255" name="adresse">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="336" parent="255" name="telephone">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="337" parent="255" name="email">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="338" parent="255" name="id_representant">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="339" parent="255" name="entreprise_representant_FK">
+      <ColNames>id_representant</ColNames>
+    </index>
+    <key id="340" parent="255" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="341" parent="255" name="entreprise_representant_FK">
+      <ColNames>id_representant</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>representant</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="342" parent="256" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="343" parent="256" name="numero">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="344" parent="256" name="libelle">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="345" parent="256" name="emeteur">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="346" parent="256" name="recepteur">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="347" parent="256" name="produit">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="348" parent="256" name="datefacture">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="349" parent="256" name="echeance">
+      <Position>8</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="350" parent="256" name="modalites">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="351" parent="256" name="encaissement">
       <Position>10</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="394" parent="261" name="PRIMARY">
+    <key id="352" parent="256" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="353" parent="257" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="354" parent="257" name="id_facturation">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="355" parent="257" name="facturer_facturation0_FK">
+      <ColNames>id_facturation</ColNames>
+    </index>
+    <key id="356" parent="257" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id
+id_facturation</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="357" parent="257" name="facturer_produit_FK">
+      <ColNames>id</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>produit</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="358" parent="257" name="facturer_facturation0_FK">
+      <ColNames>id_facturation</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>facturation</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="359" parent="258" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="258" name="id_utilisateur">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="361" parent="258" name="interesser_utilisateur0_FK">
+      <ColNames>id_utilisateur</ColNames>
+    </index>
+    <key id="362" parent="258" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id
+id_utilisateur</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="363" parent="258" name="interesser_contrat_FK">
+      <ColNames>id</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>contrat</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="364" parent="258" name="interesser_utilisateur0_FK">
+      <ColNames>id_utilisateur</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>utilisateur</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="365" parent="259" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="366" parent="259" name="designation">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="367" parent="259" name="prixunitaireproduit">
+      <Position>3</Position>
+      <DataType>decimal(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="368" parent="259" name="tva">
+      <Position>4</Position>
+      <DataType>decimal(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="369" parent="259" name="prixtotal">
+      <Position>5</Position>
+      <DataType>decimal(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="370" parent="259" name="quantiteproduit">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="371" parent="259" name="id_facturation">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="372" parent="259" name="id_devis">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="373" parent="259" name="activite">
+      <Position>9</Position>
+      <DataType>varchar(50)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="374" parent="259" name="produit">
+      <Position>10</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="375" parent="259" name="heuretotale">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="376" parent="259" name="description">
+      <Position>12</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="377" parent="259" name="prixhoraire">
+      <Position>13</Position>
+      <DataType>decimal(10)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="378" parent="259" name="produit_facturation_FK">
+      <ColNames>id_facturation</ColNames>
+    </index>
+    <index id="379" parent="259" name="produit_devis0_FK">
+      <ColNames>id_devis</ColNames>
+    </index>
+    <key id="380" parent="259" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="381" parent="259" name="produit_facturation_FK">
+      <ColNames>id_facturation</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>facturation</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="382" parent="259" name="produit_devis0_FK">
+      <ColNames>id_devis</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>devis</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="383" parent="260" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="384" parent="260" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="385" parent="260" name="quantite">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="386" parent="260" name="devise">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="387" parent="260" name="tva">
+      <Position>5</Position>
+      <DataType>decimal(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="388" parent="260" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="389" parent="261" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="390" parent="261" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="391" parent="261" name="titre">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="392" parent="261" name="prenom">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="393" parent="261" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="394" parent="262" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="395" parent="262" name="id_contrat">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="396" parent="262" name="signer_contrat0_FK">
+      <ColNames>id_contrat</ColNames>
+    </index>
+    <key id="397" parent="262" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id
+id_contrat</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="398" parent="262" name="signer_entreprise_FK">
+      <ColNames>id</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>entreprise</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="399" parent="262" name="signer_contrat0_FK">
+      <ColNames>id_contrat</ColNames>
+      <RefSchemaName>gestioncontrat</RefSchemaName>
+      <RefTableName>contrat</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="400" parent="263" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="401" parent="263" name="libelle">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="402" parent="263" name="descriptif">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="403" parent="263" name="modalites">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="404" parent="263" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="405" parent="264" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="406" parent="264" name="pseudo">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="407" parent="264" name="motdepasse">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="408" parent="264" name="nom">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="409" parent="264" name="prenom">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="410" parent="264" name="adresse">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="411" parent="264" name="telephone">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="412" parent="264" name="email">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="413" parent="264" name="datedenaissance">
+      <Position>9</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="414" parent="264" name="role">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="415" parent="264" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
