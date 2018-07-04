@@ -1,27 +1,25 @@
-/*package com.afpa.control;
+package com.afpa.control;
 
 import com.afpa.access.AccessDb;
 import com.afpa.model.Utilisateur;
 import org.primefaces.context.RequestContext;
 
 import javax.annotation.PostConstruct;
-import javax.faces.validator.ValidatorException;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.security.Principal;
 
 @Named
 @SessionScoped
-public class ControlUtilLogin implements Serializable{
+public class controlUtilLogin implements Serializable
+{
 
     @Inject
     private AccessDb adb;
@@ -30,7 +28,7 @@ public class ControlUtilLogin implements Serializable{
     private String connectlabel;
     private Utilisateur u;
 
-    public ControlUtilLogin()
+    public controlUtilLogin()
     {
     }
 
@@ -55,9 +53,8 @@ public class ControlUtilLogin implements Serializable{
         FacesContext context=FacesContext.getCurrentInstance(); //envoi de message
         HttpServletRequest request=(HttpServletRequest) context.getExternalContext().getRequest(); //recuperation de la requete
 
-        try
-        {
-            request.login(u.getPseudo(),u.getMotdepasse());
+
+            if (u.getPseudo().equals(true) && u.getMotdepasse().equals(true)){
             context.addMessage(null, new FacesMessage("Bienvenue " + u.getPseudo()));
             u = adb.recherche(Utilisateur.class, u.getPseudo());
 
@@ -67,10 +64,9 @@ public class ControlUtilLogin implements Serializable{
 
             connectlabel="Se déconnecter"; //change le libellé du bouton lorsque l'utilisateur est connecter
         }
-        catch (ServletException ex)
-        {
+
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Le mot de passe n'est pas correct", ""));
-        }
+
     }
 
     public void show()
@@ -85,23 +81,9 @@ public class ControlUtilLogin implements Serializable{
         else
         {
             System.out.println("Deconnexion");
-            try{
-                request.logout();
-            }
-            catch (ServletException ex)
-            {
-                Logger.getLogger(ControlUtilLogin.class.getName()).log(Level.SEVERE, null, ex);
-                context.addMessage(null, new FacesMessage("Erreur de Déconnexion"));
-            }
+
             request.getSession().invalidate();
-            try
-            {
-                context.getExternalContext().redirect("accueil.xhtml");
-            }
-            catch (IOException ex)
-            {
-                Logger.getLogger(ControlUtilLogin.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
         }
     }
 
@@ -136,6 +118,9 @@ public class ControlUtilLogin implements Serializable{
     public void setConnectlabel(String connectlabel) {
         this.connectlabel = connectlabel;
     }
+
+    public Principal getCurrentUtilisateur(){
+        return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal();
+    }
 }
-*/
 

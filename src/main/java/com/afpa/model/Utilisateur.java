@@ -11,8 +11,9 @@ import java.nio.charset.StandardCharsets;
 @Entity
 @Table(name="utilisateur")
 @NamedQueries({
+        @NamedQuery(name="Utilisateur.findAll", query = "SELECT u FROM Utilisateur u"),
         @NamedQuery(name="Utilisateur.findbyPseudo", query = "SELECT u FROM Utilisateur u WHERE u.pseudo = :pseudo"),
-        @NamedQuery(name = "Utilisateur.findByMotdepasse", query = "SELECT u FROM Utilisateur u WHERE u.motdepasse = :motdepasse"),
+        @NamedQuery(name ="Utilisateur.findByMotdepasse", query = "SELECT u FROM Utilisateur u WHERE u.motdepasse = :motdepasse"),
         //@NamedQuery(name= "Utilisateur.findAllContratForUser", query = "select c FROM Contrat c WHERE c.utilisateur = :utilisateur")
         //@NamedQuery(name= "Utilisateur.findAllFactureForUser", query = "select f FROM Contrat f WHERE f.utilisateur = :utilisateur")
         //@NamedQuery(name= "Utilisateur.findAllDevisForUser", query = "select d FROM Contrat d WHERE d.utilisateur = :utilisateur")

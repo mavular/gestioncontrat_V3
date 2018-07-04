@@ -1,25 +1,22 @@
 package com.afpa.access;
 
 import com.afpa.model.DataColumn;
-
 import com.afpa.model.Utilisateur;
-
 import com.afpa.model.interfaces.User;
 
-import javax.faces.view.ViewScoped;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.metamodel.EntityType;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.ejb.*;
-import javax.persistence.Query;
-import javax.persistence.metamodel.EntityType;
 
 
 @Stateless
+
 public class AccessDb implements Serializable {
 
     @PersistenceContext
@@ -70,7 +67,7 @@ public class AccessDb implements Serializable {
     }
 
     //création d'une liste d'utilisateurs par une requête nomée par l'Administrateur
-    public List<Utilisateur> getAllUtilisateurs(){ return em.createNamedQuery("Utilisateur.finAll",Utilisateur.class).getResultList();}
+    public List<Utilisateur> getAllUtilisateurs(){ return em.createNamedQuery("Utilisateur.findAll",Utilisateur.class).getResultList();}
 
 
     public List<Class> getAllClass(){

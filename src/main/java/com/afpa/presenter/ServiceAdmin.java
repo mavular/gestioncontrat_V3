@@ -1,13 +1,8 @@
 package com.afpa.presenter;
 
-public class ServiceAdmin {
-}
-/*package com.afpa.presenter;
-
 import com.afpa.access.AccessDb;
+import com.afpa.model.Contrat;
 import com.afpa.model.DataColumn;
-import com.afpa.model.Salle;
-import com.afpa.model.Utilisateur;
 import org.primefaces.event.RowEditEvent;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +13,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Named
@@ -33,6 +27,7 @@ public class ServiceAdmin implements Serializable {
     private Class selection;
     private List<DataColumn> columns;
     private List mydata;
+    private List<Contrat> listContrat;
 
     private boolean testObject;
 
@@ -48,7 +43,7 @@ public class ServiceAdmin implements Serializable {
     public void dataRemplir(){
         columns = dba.getAllColumnModel(selection);
         mydata = dba.findAll(selection);
-        test();
+        //test();
     }
 
     public AccessDb getDba() {
@@ -103,7 +98,7 @@ public class ServiceAdmin implements Serializable {
         dba.maj(event.getObject());
     }
 
-    public <T> void deleteRow(T t){
+    /*public <T> void deleteRow(T t){
 
         //****** DELETE + TEST RESERVATION SUR SALLE AVANT DELETE ************
         if(t.getClass().getSimpleName().equals("Salle")){
@@ -155,7 +150,7 @@ public  void test(){
         testObject = false;
         }
         }
-
+*/
 public boolean getTestObject() {
         return testObject;
         }
@@ -164,5 +159,12 @@ public void setTestObject(boolean testObject) {
         this.testObject = testObject;
         }
 
+    public List<Contrat> getListContrat() {
+        return listContrat;
+    }
+
+    public void setListContrat(List<Contrat> listContrat) {
+        this.listContrat = listContrat;
+    }
 }
-        */
+        

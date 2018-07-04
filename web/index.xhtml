@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -20,19 +22,19 @@
     <h:form>
     <p:growl id="msgs" showDetail="true" />
 
-            <p:panel id="toggleable" header="SE CONNECTER" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+        <p:panel id="toggleable" header="SE CONNECTER" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
                 <p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />
                 <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />
 
                 <h:panelGrid columns="2" cellpadding="10">
                     <h:outputLabel for="username" value="Pseudo : " />
-                    <p:inputText id="username" value="" required="true" label="pseudo" />
+                    <p:inputText id="username"  required="true" label="pseudo" />
                     <h:outputLabel for="password" value="Mot de passe : " />
                     <p:password id="password" value="" required="true" label="password" />
                     <f:facet name="footer">
                         <p:commandButton style="color: lime" value="VALIDER" icon="ui-icon-check"/>
                         <span style="margin: auto"></span>
-                        <p:commandButton style="color: blue" value="ACCUEIL" outcome="/layouts/template.xhtml?faces-redirect=true" icon="ui-icon-check"/>
+                        <p:commandButton style="color: blue" value="ACCUEIL" outcome="pagetest.xhtml?faces-redirect=true" icon="ui-icon-check"/>
                         <!--<p:commandButton style="color: lime" value="Login" oncomplete="PF('dlg1').hide();" update="connect,messages" icon="ui-icon-check" />-->
                     </f:facet>
                 </h:panelGrid>

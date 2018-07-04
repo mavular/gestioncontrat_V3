@@ -1,8 +1,5 @@
 package com.afpa.converter;
 
-public class ClassConverter {
-}
-/*package com.afpa.Converter;
 
 import org.eclipse.persistence.jpa.config.ConverterClass;
 
@@ -37,4 +34,4 @@ public class ClassConverter implements Converter,Serializable {
             return ((Class)value).getCanonicalName();
         }
     }
-} */
+}

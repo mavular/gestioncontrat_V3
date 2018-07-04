@@ -1,9 +1,5 @@
 package com.afpa.presenter;
 
-public class ServiceUtilisateur {
-}
-/*package com.afpa.presenter;
-
 import com.afpa.access.AccessDb;
 import com.afpa.model.Utilisateur;
 import org.primefaces.event.FlowEvent;
@@ -29,7 +25,10 @@ public class ServiceUtilisateur implements Serializable
     @Inject
     private AccessDb adb;
 
-    public ServiceUtilisateur() {}
+    public ServiceUtilisateur()
+    {
+
+    }
 
     public void addUtilisateur()
     {
@@ -43,7 +42,8 @@ public class ServiceUtilisateur implements Serializable
 
     }
 
-    public String onFlowProcess(FlowEvent event) {
+    public String onFlowProcess(FlowEvent event)
+    {
         if(passer) {
             passer = false;   //fait un reset dans le cas ou l'utilisateur fait un retour
             return "confirm";
@@ -53,7 +53,10 @@ public class ServiceUtilisateur implements Serializable
         }
     }
 
-    public Utilisateur getUfromDatabase(){return adb.recherche(Utilisateur.class,((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal().getName());}
+    public Utilisateur getUfromDatabase()
+    {
+        return adb.recherche(Utilisateur.class,((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal().getName());
+    }
 
     public Utilisateur getU() {
         return u;
@@ -95,9 +98,9 @@ public class ServiceUtilisateur implements Serializable
         this.adb = adb;
     }
 
-    public Principal getCurrentUtilisateur(){
+    public Principal getCurrentUtilisateur()
+    {
         return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal();
     }
 }
-*/
 

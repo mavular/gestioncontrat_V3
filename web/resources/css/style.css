@@ -1,4 +1,125 @@
 html{
+    background-color: transparent;
+}
+
+.global {
+    width: auto;
+    border-style: solid;
+    border-width: 1px;
+    text-align: justify;
+}
+
+.bandeau {
+    width: 98%;
+    align-self: auto;
+    color: blue;
+    height: 150px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.fin {
+    border-style: solid;
+    border-width:  1px;
+    width: 98%;
+    align-self: auto;
+    height: 150px;
+    clear: both;
+}
+
+.colonnegauche {
+    width: 30%;
+    float: left;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.colonnecentre {
+    width: 50%;
+    float: left;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.colonnedroite {
+    width: 10%;
+    float: left;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.menusecteur{
+    background-color: red;
+    font-style: italic;
+    width: 100px;
+    height: 100px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.titrerubrique {
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+}
+
+.hierarchie {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.contenu {
+    width: 90%;
+    align-self: auto;
+    margin-top: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.menurubriques {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.descriptif {
+    margin: 5px;
+    margin-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-color: #005500;
+    border-width: 3px;
+    border-style: inset;
+    background: white;
+    color: #005500;
+}
+
+.texte {
+    margin: 5px;
+    margin-top: 0px;
+    z-index: 1;
+    padding: 5px;
+    height: auto;
+    border-color: #005500;
+    border-width: 2px;
+    border-style: solid;
+    background: white;
+    color: #005500;
+}
+
+
+
+
+/*
+html{
     background-color: #eee;
 }
 .container{
@@ -42,3 +163,4 @@ ul {
     list-style-type:none
 }
 
+*/
