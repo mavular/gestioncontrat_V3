@@ -2,6 +2,7 @@ html{
     background-color: transparent;
 }
 
+
 .global {
     width: auto;
     border-style: solid;
@@ -10,7 +11,7 @@ html{
 }
 
 .bandeau {
-    width: 98%;
+    width: 99%;
     align-self: auto;
     color: blue;
     height: 150px;
@@ -36,7 +37,7 @@ html{
 }
 
 .colonnecentre {
-    width: 50%;
+    width: 40%;
     float: left;
     padding: 5px;
     border-style: solid;
@@ -44,8 +45,8 @@ html{
 }
 
 .colonnedroite {
-    width: 10%;
-    float: left;
+    width: 20%;
+    float: right;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
@@ -55,7 +56,7 @@ html{
     background-color: red;
     font-style: italic;
     width: 100px;
-    height: 100px;
+    height: 98px;
     border-style: solid;
     border-width: 1px;
 }
@@ -78,7 +79,7 @@ html{
 }
 
 .contenu {
-    width: 90%;
+    width: 99%;
     align-self: auto;
     margin-top: 5px;
     border-style: solid;
@@ -115,13 +116,6 @@ html{
     color: #005500;
 }
 
-
-
-
-/*
-html{
-    background-color: #eee;
-}
 .container{
     width: 80%;
     margin: 0 auto;
@@ -162,5 +156,3 @@ ul {
     -moz-columns: 1;
     list-style-type:none
 }
-
-*/

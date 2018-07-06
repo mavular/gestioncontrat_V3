@@ -8,10 +8,16 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<head>
-    <title>Title</title>
-</head>
-<body>
+<h:head>
+    <title>PAGE D'AFFICHAGE D'UN PROFIL</title>
+</h:head>
+<h:body>
+    <div align="center" style="color:blue;font-family:cursive" >
+        <h1>VEUILLEZ REMPLIR LES CHAMPS D'INSCRIPTION</h1>
+    </div>
+    <p>
+        <a href="accueil.xhtml">Retour Accueil</a>
+    </p>
 <p:dataTable value="#{serviceAdmin.listContrat}" var="c" id="dt" editable="true">
 
     <p:ajax event="rowEdit"  listener="#{serviceAdmin.onRowEdit}"  update="dt"/>
@@ -40,5 +46,5 @@
 </p:commandButton>
 </p:column>
 </p:dataTable>
-</body>
+</h:body>
 </html>
