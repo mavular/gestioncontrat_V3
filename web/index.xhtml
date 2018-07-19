@@ -9,7 +9,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>PROJET GESTION DES CONTRATS</title>
+    <title>PAGE SE CONNECTER</title>
 </h:head>
 <h:body>
 
@@ -33,14 +33,14 @@
                 <p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />
                 <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />
 
-                <h:panelGrid columns="2" cellpadding="10">
+                <h:panelGrid columns="2" cellpadding="5px">
                     <h:outputLabel for="username" value="Pseudo : " />
                     <p:inputText id="username" value="#{ControlUtilLogin.u.pseudo}" required="true" label="pseudo" />
                     <h:outputLabel for="password" value="Mot de passe : " />
                     <p:password id="password" value="#{ControlUtilLogin.u.motdepasse}" required="true" label="password" />
                     <f:facet name="footer">
-                        <p:commandButton style="color: lime" value="VALIDER" actionListener="#{controlUtilLogin.logIn()}" oncomplete="PF('dlg1').hide();" update="connect,messages" icon="ui-icon-check"/>
-                        <span style="margin: auto"></span>
+                        <p:commandButton style="color: lime" value="VALIDER" icon="ui-icon-check"/>
+                        <span style="margin: auto; border-spacing: 50px"></span>
                         <p:button style="color: mediumblue" value="ACCUEIL" outcome="accueil.xhtml" icon="ui-icon-check"/>
                         <!--<p:commandButton style="color: lime" value="Login" oncomplete="PF('dlg1').hide();" update="connect,messages" icon="ui-icon-check" />-->
                     </f:facet>
@@ -48,15 +48,18 @@
 
                 <f:facet name="options">
                     <p:menu>
-                        <p:submenu label="Settings">
-                            <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
-                            <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
+                        <p:submenu label="Action">
+                            <p:menuitem value="Réduire" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
+                            <p:menuitem value="Fermer" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
                         </p:submenu>
                     </p:menu>
                 </f:facet>
             </p:panel>
 
         </h:form>
+        <p style="color: red">
+            <a href="creerutilisateur.xhtml">Mot de passe oublié? / S'INSCRIRE?</a>
+        </p>
     </div>
 </h:body>
 </html>

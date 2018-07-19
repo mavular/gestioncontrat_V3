@@ -1,9 +1,9 @@
-CREATE DATABASE gestioncontrat CHARACTER SET utf8;
-USE gestioncontrat;
 #------------------------------------------------------------
 #        Script MySQL.
 #------------------------------------------------------------
 
+CREATE DATABASE gestioncontrat CHARACTER SET utf8;
+USE gestioncontrat;
 
 #------------------------------------------------------------
 # Table: typecontrat
@@ -29,62 +29,6 @@ CREATE TABLE date(
 
 
 #------------------------------------------------------------
-# Table: facturation
-#------------------------------------------------------------
-
-CREATE TABLE facturation(
-  id           Int  Auto_increment  NOT NULL ,
-  numero       Int NOT NULL ,
-  libelle      Varchar (255) NOT NULL ,
-  emeteur      Varchar (255) NOT NULL ,
-  recepteur    Varchar (255) NOT NULL ,
-  produit      Varchar (255) NOT NULL ,
-  datefacture  Date NOT NULL ,
-  echeance     Date NOT NULL ,
-  modalites    Varchar (255) NOT NULL ,
-  encaissement Varchar (255) NOT NULL
-  ,CONSTRAINT facturation_PK PRIMARY KEY (id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: devis
-#------------------------------------------------------------
-
-CREATE TABLE devis(
-  id         Int NOT NULL ,
-  numero     Int NOT NULL ,
-  libelle    Varchar (25) NOT NULL ,
-  emeteur    Varchar (255) NOT NULL ,
-  recepteur  Varchar (255) NOT NULL ,
-  prestation Varchar (255) NOT NULL ,
-  datedevis  Date NOT NULL
-  ,CONSTRAINT devis_PK PRIMARY KEY (id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Prestation
-#------------------------------------------------------------
-
-CREATE TABLE Prestation(
-  id             Int  Auto_increment  NOT NULL ,
-  Activite       Varchar (50) NOT NULL ,
-  Description    Varchar (255) NOT NULL ,
-  designation    Varchar (255) NOT NULL ,
-  tva            Decimal NOT NULL ,
-  Prixhoraire         Decimal NOT NULL ,
-  Heure_totale   Int NOT NULL ,
-  id_facturation Int NOT NULL ,
-  id_devis       Int NOT NULL
-  ,CONSTRAINT Prestation_PK PRIMARY KEY (id)
-
-  ,CONSTRAINT Prestation_facturation_FK FOREIGN KEY (id_facturation) REFERENCES facturation(id)
-  ,CONSTRAINT Prestation_devis0_FK FOREIGN KEY (id_devis) REFERENCES devis(id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: contrat
 #------------------------------------------------------------
 
@@ -99,15 +43,13 @@ CREATE TABLE contrat(
   id_typecontrat Int NOT NULL ,
   date           Date NOT NULL ,
   date_finir     Date NOT NULL ,
-  date_signer    Date NOT NULL ,
-  id_Prestation  Int NOT NULL
+  date_approuver Date NOT NULL
   ,CONSTRAINT contrat_PK PRIMARY KEY (id)
 
   ,CONSTRAINT contrat_typecontrat_FK FOREIGN KEY (id_typecontrat) REFERENCES typecontrat(id)
   ,CONSTRAINT contrat_date0_FK FOREIGN KEY (date) REFERENCES date(date)
   ,CONSTRAINT contrat_date1_FK FOREIGN KEY (date_finir) REFERENCES date(date)
-  ,CONSTRAINT contrat_date2_FK FOREIGN KEY (date_signer) REFERENCES date(date)
-  ,CONSTRAINT contrat_Prestation3_FK FOREIGN KEY (id_Prestation) REFERENCES Prestation(id)
+  ,CONSTRAINT contrat_date2_FK FOREIGN KEY (date_approuver) REFERENCES date(date)
 )ENGINE=InnoDB;
 
 
@@ -127,11 +69,61 @@ CREATE TABLE avenant(
 
 
 #------------------------------------------------------------
+# Table: facturation
+#------------------------------------------------------------
+
+CREATE TABLE facturation(
+  id           Int  Auto_increment  NOT NULL ,
+  numero       Int NOT NULL ,
+  libelle      Varchar (255) NOT NULL ,
+  emeteur      Varchar (255) NOT NULL ,
+  recepteur    Varchar (255) NOT NULL ,
+  datefacture  Date NOT NULL ,
+  echeance     Date NOT NULL ,
+  modalites    Varchar (255) NOT NULL ,
+  encaissement Varchar (255) NOT NULL
+  ,CONSTRAINT facturation_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: devis
+#------------------------------------------------------------
+
+CREATE TABLE devis(
+  id         Int  Auto_increment  NOT NULL ,
+  numero     Int NOT NULL ,
+  libelle    Varchar (25) NOT NULL ,
+  emeteur    Varchar (255) NOT NULL ,
+  recepteur  Varchar (255) NOT NULL ,
+  prestation Varchar (255) NOT NULL ,
+  datedevis  Date NOT NULL
+  ,CONSTRAINT devis_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: prestation
+#------------------------------------------------------------
+
+CREATE TABLE prestation(
+  id          Int  Auto_increment  NOT NULL ,
+  activite    Varchar (50) NOT NULL ,
+  description Varchar (255) NOT NULL ,
+  designation Varchar (255) NOT NULL ,
+  tva         Decimal NOT NULL ,
+  prixh       Decimal NOT NULL ,
+  Heuretotale Int NOT NULL
+  ,CONSTRAINT prestation_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: utilisateur
 #------------------------------------------------------------
 
 CREATE TABLE utilisateur(
-  id              Int NOT NULL ,
+  id              Int  Auto_increment  NOT NULL ,
   pseudo          Varchar (255) NOT NULL ,
   motdepasse      Varchar (255) NOT NULL ,
   nom             Varchar (255) NOT NULL ,
@@ -146,11 +138,27 @@ CREATE TABLE utilisateur(
 
 
 #------------------------------------------------------------
+# Table: entreprise
+#------------------------------------------------------------
+
+CREATE TABLE entreprise(
+  id            Int  Auto_increment  NOT NULL ,
+  nom           Varchar (255) NOT NULL ,
+  siret         Int NOT NULL ,
+  qualification Varchar (255) NOT NULL ,
+  adresse       Varchar (255) NOT NULL ,
+  telephone     Int NOT NULL ,
+  email         Varchar (255) NOT NULL
+  ,CONSTRAINT entreprise_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: representant
 #------------------------------------------------------------
 
 CREATE TABLE representant(
-  id     Int NOT NULL ,
+  id     Int  Auto_increment  NOT NULL ,
   nom    Varchar (255) NOT NULL ,
   titre  Varchar (255) NOT NULL ,
   prenom Varchar (255) NOT NULL
@@ -159,34 +167,17 @@ CREATE TABLE representant(
 
 
 #------------------------------------------------------------
-# Table: entreprise
-#------------------------------------------------------------
-
-CREATE TABLE entreprise(
-  id              Int NOT NULL ,
-  nom             Varchar (255) NOT NULL ,
-  siret           Int NOT NULL ,
-  qualification   Varchar (255) NOT NULL ,
-  adresse         Varchar (255) NOT NULL ,
-  telephone       Int NOT NULL ,
-  email           Varchar (255) NOT NULL ,
-  id_representant Int NOT NULL
-  ,CONSTRAINT entreprise_PK PRIMARY KEY (id)
-
-  ,CONSTRAINT entreprise_representant_FK FOREIGN KEY (id_representant) REFERENCES representant(id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: produit
 #------------------------------------------------------------
 
 CREATE TABLE produit(
-  id       Int  Auto_increment  NOT NULL ,
-  nom      Varchar (255) NOT NULL ,
-  quantite Int NOT NULL ,
-  devise   Varchar (255) NOT NULL ,
-  tva      Decimal NOT NULL
+  id           Int  Auto_increment  NOT NULL ,
+  nom          Varchar (100) NOT NULL ,
+  quantite     Int NOT NULL ,
+  devise       Varchar (100) NOT NULL ,
+  prixunitaire DECIMAL (15,3)  NOT NULL ,
+  tva          Decimal NOT NULL ,
+  description  Varchar (255) NOT NULL
   ,CONSTRAINT produit_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -196,12 +187,56 @@ CREATE TABLE produit(
 #------------------------------------------------------------
 
 CREATE TABLE signer(
-  id         Int NOT NULL ,
-  id_contrat Int NOT NULL
-  ,CONSTRAINT signer_PK PRIMARY KEY (id,id_contrat)
+  id              Int NOT NULL ,
+  id_entreprise   Int NOT NULL ,
+  id_representant Int NOT NULL
+  ,CONSTRAINT signer_PK PRIMARY KEY (id,id_entreprise,id_representant)
 
-  ,CONSTRAINT signer_entreprise_FK FOREIGN KEY (id) REFERENCES entreprise(id)
-  ,CONSTRAINT signer_contrat0_FK FOREIGN KEY (id_contrat) REFERENCES contrat(id)
+  ,CONSTRAINT signer_contrat_FK FOREIGN KEY (id) REFERENCES contrat(id)
+  ,CONSTRAINT signer_entreprise0_FK FOREIGN KEY (id_entreprise) REFERENCES entreprise(id)
+  ,CONSTRAINT signer_representant1_FK FOREIGN KEY (id_representant) REFERENCES representant(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: generer
+#------------------------------------------------------------
+
+CREATE TABLE generer(
+  id             Int NOT NULL ,
+  id_facturation Int NOT NULL
+  ,CONSTRAINT generer_PK PRIMARY KEY (id,id_facturation)
+
+  ,CONSTRAINT generer_prestation_FK FOREIGN KEY (id) REFERENCES prestation(id)
+  ,CONSTRAINT generer_facturation0_FK FOREIGN KEY (id_facturation) REFERENCES facturation(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: lier
+#------------------------------------------------------------
+
+CREATE TABLE lier(
+  id            Int NOT NULL ,
+  id_prestation Int NOT NULL
+  ,CONSTRAINT lier_PK PRIMARY KEY (id,id_prestation)
+
+  ,CONSTRAINT lier_devis_FK FOREIGN KEY (id) REFERENCES devis(id)
+  ,CONSTRAINT lier_prestation0_FK FOREIGN KEY (id_prestation) REFERENCES prestation(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: concerner
+#------------------------------------------------------------
+
+CREATE TABLE concerner(
+  id            Int NOT NULL ,
+  id_prestation Int NOT NULL
+  ,CONSTRAINT concerner_PK PRIMARY KEY (id,id_prestation)
+
+  ,CONSTRAINT concerner_contrat_FK FOREIGN KEY (id) REFERENCES contrat(id)
+  ,CONSTRAINT concerner_prestation0_FK FOREIGN KEY (id_prestation) REFERENCES prestation(id)
 )ENGINE=InnoDB;
 
 
@@ -245,6 +280,8 @@ CREATE TABLE facturer(
   ,CONSTRAINT facturer_produit_FK FOREIGN KEY (id) REFERENCES produit(id)
   ,CONSTRAINT facturer_facturation0_FK FOREIGN KEY (id_facturation) REFERENCES facturation(id)
 )ENGINE=InnoDB;
+
+
 
 #------------------------------------------------------------
 # Pour rechercher les différents utilisateurs de la base de données

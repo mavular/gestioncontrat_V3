@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 @Table(name="utilisateur")
 @NamedQueries({
         @NamedQuery(name="Utilisateur.findAll", query = "SELECT u FROM Utilisateur u"),
-        @NamedQuery(name="Utilisateur.findbyPseudo", query = "SELECT u FROM Utilisateur u WHERE u.pseudo = :pseudo"),
+        @NamedQuery(name="Utilisateur.findByPseudo", query = "SELECT u FROM Utilisateur u WHERE u.pseudo = :pseudo"),
         @NamedQuery(name ="Utilisateur.findByMotdepasse", query = "SELECT u FROM Utilisateur u WHERE u.motdepasse = :motdepasse"),
         //@NamedQuery(name= "Utilisateur.findAllContratForUser", query = "select c FROM Contrat c WHERE c.utilisateur = :utilisateur")
         //@NamedQuery(name= "Utilisateur.findAllFactureForUser", query = "select f FROM Contrat f WHERE f.utilisateur = :utilisateur")
@@ -22,7 +22,8 @@ import java.nio.charset.StandardCharsets;
 public class Utilisateur implements User, Serializable
 {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name="pseudo")
     private String pseudo;
@@ -54,7 +55,7 @@ public class Utilisateur implements User, Serializable
     public Utilisateur()
     {}
 
-    public Utilisateur(int id, String pseudo, String nom, String prenom, String groupesocial, String profil, String email,String motdepasse)
+    public Utilisateur(Integer id, String pseudo, String nom, String prenom, String groupesocial, String profil, String email,String motdepasse)
     {
         this.id = id;
         this.pseudo = pseudo;
