@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>PAGE CREER UN CONTRAT</title>
+</h:head>
+<h:body>
+    <div align="center" style="color:chartreuse;font-family:cursive" >
+        <h1>VEUILLEZ REMPLIR LES CHAMPS DU CONTRAT</h1>
+    </div>
+    <p>
+        <a href="accueil.xhtml">Retour Accueil</a>
+    </p>
+    <div>
+        <h:form>
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+            <p:wizard flowListener="#{serviceUtilisateur.onFlowProcess}">
+                <p:tab id="prestataire" title="Prestataire">
+                    <p:panel header=" Vos Coordonnées ">
+                        <h:panelGrid columns="3">
+                         <p:messages><p:autoUpdate /></p:messages>
+                            <p:outputLabel for="selection1" value="Civilité* : " />
+                                <p:selectOneMenu id="selection1" value="#{serviceAdmin.selection}" converter="#{classConverter}" style="width:125px">
+                                    <f:selectItem itemLabel="Mr/Mme/Mlle" itemValue="" />
+                                    <f:selectItem itemLabel="Mr" itemValue="Mr" />
+                                    <f:selectItem itemLabel="Mme" itemValue="Mme" />
+                                    <f:selectItem itemLabel="Mlle" itemValue="Mlle" />
+                            <p:ajax listener="#{serviceAdmin.dataRemplir}" update="@form"/>
+                                </p:selectOneMenu>
+                            <p:outputLabel value="Nom* : " />
+                            <p:inputText id="nom1" value="#{serviceRepresentant.r.nom(prestataire)}" label="Nom" required="true" ><f:validateLength maximum="10" /></p:inputText>
+                            <p:message for="nom1"/>
+                            <p:outputLabel value="Prénom* : " />
+                            <p:inputText id="prenom1" value="#{serviceRepresentant.r.prenom(prestataire)}" label="Prénom" required="true" ><f:validateLength maximum="10" /></p:inputText>
+                            <p:message for="prenom1" message="text"/>
+                            <p:outputLabel value="Titre* : " />
+                            <p:inputText id="titre1" value="#{serviceRepresentant.r.titre(prestataire)}"  feedback="true" required="true" ><f:validateLength maximum="10" /></p:inputText>
+                            <p:message for="titre1" message="text"/>
+                            <p:outputLabel value="Régime : " />
+                            <p:inputText id="regime1" value="#{serviceEntreprise.e.regime(prestataire)}"/>
+                            <p:message for="regime1" message="text"/>
+                            <p:outputLabel value="Nom de Société : " />
+                            <p:inputText id="societe1" value="#{serviceEntreprise.e.nom(prestataire)}"/>
+                            <p:message for="societe1" message="text"/>
+                            <p:outputLabel value="Siret : " />
+                            <p:inputText id="siret1" value="#{serviceEntreprise.e.siret(prestataire)}"/>
+                            <p:message for="siret1" message="text"/>
+                            <p:outputLabel value="Votre Domaine : " />
+                            <p:inputText id="qualification1" value="#{serviceEntreprise.e.qualification(prestataire)}"/>
+                            <p:message for="qualification1" message="text"/>
+                            <p:outputLabel value="Adresse : " />
+                            <p:inputText id="adresse1" value="#{serviceEntreprise.e.adresse(prestataire)}" placeholder="N°/Rue/CP/Ville/Pays"/>
+                            <p:message for="address1" message="text"/>
+                            <p:outputLabel value="Téléphone : " />
+                            <p:inputText id="telephone1" value="#{serviceEntreprise.e.telephone(prestataire)}"/>
+                            <p:message for="telephone1" message="text"/>
+                            <!--<p:outputLabel value="Passer : " />
+                            <h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />-->
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <p:tab id="client" title="Client">
+                    <p:panel header="Coordonnées du Client">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                             <p:messages><p:autoUpdate /></p:messages>
+                            <p:outputLabel for="selection" value="Civilité* : " />
+                                    <p:selectOneMenu id="selection" value="#{serviceAdmin.selection}" converter="#{classConverter}" style="width:125px">
+                                        <f:selectItem itemLabel="Mr/Mme/Mlle" itemValue="" />
+                                        <f:selectItem itemLabel="Mr" itemValue="Mr" />
+                                        <f:selectItem itemLabel="Mme" itemValue="Mme" />
+                                        <f:selectItem itemLabel="Mlle" itemValue="Mlle" />
+                            <p:ajax listener="#{serviceAdmin.dataRemplir}" update="@form"/>
+                                    </p:selectOneMenu>
+                            <p:outputLabel value="Nom* : " />
+                            <p:inputText id="nom" value="#{serviceRepresentant.r.nom(client)}" label="Nom" required="true"><f:validateLength maximum="10" /></p:inputText>
+                            <p:message for="nom"/>
+                            <p:outputLabel value="Prénom* : " />
+                            <p:inputText id="prenom" value="#{serviceRepresentant.r.prenom(client)}" label="Prénom" required="true" ><f:validateLength maximum="10" /></p:inputText>
+                            <p:message for="prenom" message="text"/>
+                            <p:outputLabel value="Titre* : " />
+                            <p:inputText id="titre" value="#{serviceRepresentant.r.titre(client)}"  feedback="true" required="true" ><f:validateLength maximum="10" /></p:inputText>
+                            <p:message for="titre" message="text"/>
+                            <p:outputLabel value="Régime : " />
+                            <p:inputText id="regime" value="#{serviceEntreprise.e.regime(client)}"/>
+                            <p:message for="regime" message="text"/>
+                            <p:outputLabel value="Nom de Société : " />
+                            <p:inputText id="societe" value="#{serviceEntreprise.e.nom(client)}"/>
+                            <p:message for="societe" message="text"/>
+                            <p:outputLabel value="Siret : " />
+                            <p:inputText id="siret" value="#{serviceEntreprise.e.siret(client)}"/>
+                            <p:message for="siret" message="text"/>
+                            <p:outputLabel value="Votre Domaine : " />
+                            <p:inputText id="qualification" value="#{serviceEntreprise.e.qualification(client)}"/>
+                            <p:message for="qualification" message="text"/>
+                            <p:outputLabel value="Adresse : " />
+                            <p:inputText id="adresse" value="#{serviceEntreprise.e.adresse(client)}" placeholder="N°/Rue/CP/Ville/Pays"/>
+                            <p:message for="address" message="text"/>
+                            <p:outputLabel value="Téléphone : " />
+                            <p:inputText id="telephone" value="#{serviceEntreprise.e.telephone(client)}" ><f:validateLength maximum="14" /></p:inputText>
+                            <p:message for="telephone" message="text"/>
+                            <!--<p:outputLabel value="Passer : " />
+                            <h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />-->
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <p:tab id="confirm" title="Confirmation">
+                    <p:panel header="Confirmation">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid">
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Pseudo : " />
+                                <h:outputText value="#{serviceUtilisateur.u.pseudo}" styleClass="outputLabel"/>
+                                <h:outputText value="Nom : " />
+                                <h:outputText value="#{serviceUtilisateur.u.nom}" styleClass="outputLabel"/>
+                                <h:outputText value="Prénom : " />
+                                <h:outputText value="#{serviceUtilisateur.u.prenom}" styleClass="outputLabel"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Groupe Social : " />
+                                <h:outputText value="#{serviceUtilisateur.u.groupeSocial}" styleClass="outputLabel"/>
+                                <h:outputText value="Email : " />
+                                <h:outputText value="#{serviceUtilisateur.u.email}" styleClass="outputLabel"/>
+                                <h:outputText value="Profil : " />
+                                <h:outputText value="#{serviceUtilisateur.u.role}" styleClass="outputLabel"/>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <p:commandButton value="Valider" actionListener="#{serviceUtilisateur.addUtilisateur}" update="growl"  icon="ui-icon-check"/>
+                        <p:button value="Retour Accueil" outcome="accueil" icon="ui-icon-arrowreturn-1-w"/>
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+        </h:form>
+    </div>
+</h:body>
+
+</html>

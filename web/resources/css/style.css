@@ -58,18 +58,18 @@ html{
     width: 7%;
     height: 90px;
     float: left;
+    border: 1px solid #333;
+    box-shadow: 8px 8px 5px #444;
     padding: 10px;
-    margin-left: 5px;
-    margin-top: 5px;
-    border-style: solid;
-    border-width: 1px;
+    margin-left: 10px;
+    margin-top: 10px;
 
 }
 
 .menusecteur2{
     background-color:initial;
     font-style: italic;
-    width: 90%;
+    width: 89%;
     height: 99%;
     float: right;
     padding: 5px;
@@ -78,7 +78,7 @@ html{
 }
 
 .titrerubrique {
-    height: 200px;
+    height: 180px;
     border-top-width: 3px;
     border-top-style: solid;
     border-bottom-width: 3px;

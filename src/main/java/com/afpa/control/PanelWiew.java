@@ -18,9 +18,24 @@ import java.util.List;
 public class PanelWiew implements Serializable{
     private String titre;
     private String bouton;
-
-
     private List<String> images;
+
+    public void save() {
+        addMessage("Success", "Data saved");
+    }
+
+    public void update() {
+        addMessage("Success", "Data updated");
+    }
+
+    public void delete() {
+        addMessage("Success", "Data deleted");
+    }
+
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 
     @PostConstruct
     public void init() {
@@ -32,15 +47,6 @@ public class PanelWiew implements Serializable{
     public List<String> getImages() {
         return images;
     }
-
-    public void save() {
-        addMessage("Success", "Data saved");
-    }
-    public void addMessage(String summary, String detail) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-
 
     public void onClose(CloseEvent event) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Fenêtre Fermée", "Closed panel id:'" + event.getComponent().getId() + "'");

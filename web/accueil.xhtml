@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>SITE DE GESTION DE CONTRAT</title>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+    <h:body >
+
+        <div class="global">
+            <div class="bandeau">
+                <div class="menusecteur1">
+                    <p style="color: white"> GESTION<br/>_CONTRATS </p>
+                </div>
+                <div class="menusecteur2">
+                    <h:form>
+                        <p:growl id="messages"/>
+
+                        <p:menubar>
+                            <p:submenu label="Découvrez nos offres" icon="ui-icon-document">
+                                <p:menuitem value="Se connecter" url="index.xhtml" />
+                                <p:menuitem value="S'inscrire" url="creerutilisateur.xhtml" />
+
+                            </p:submenu>
+
+                            <p:submenu label="FAQ" icon="ui-icon-help">
+                                <p:submenu label="Nous Contacter" icon="ui-icon-contact">
+                                    <p:menuitem value="Adresse" title="11 rue d'Iena, 89000 Auxerre" url="#Contact" />
+                                    <p:menuitem value="E-mail" title="elkyach@yahoo.fr" url="#" />
+                                    <p:menuitem value="Téléphone" title="0669536416" url="#" />
+                                </p:submenu>
+                                <p:menuitem value="Créer un Contrat" url="remplircontrat.xhtml" />
+                                <p:menuitem value="Créer un Devis" url="#" />
+                                <p:menuitem value="Créer une Facture" url="#" />
+                            </p:submenu>
+
+                            <f:facet name="options">
+                                <p:inputText style="margin-right:10px" placeholder="RECHERCHE"/>
+                                <p:commandButton type="button" value="Valider" icon="ui-icon-extlink" />
+                            </f:facet>
+                        </p:menubar>
+                    </h:form>
+                </div>
+            </div>
+            <div class="titrerubrique">
+                <h1 style="color: blue" align="center">
+                    <span><strong>GERER VOS CONTRATS, VOS FACTURATIONS ET VOS DEVIS</strong></span>
+                </h1>
+                <h2 style="color: red" align="center">
+                    <span><strong>Pour tout autre besoin, <a href="#Contact">CONTACTEZ-NOUS</a> </strong></span>
+                </h2>
+                <ul id="menu">
+                    <li><a href="index.xhtml" title="voir la page de connexion">SE CONNECTER</a></li>
+                    <li><a href="creerutilisateur.xhtml" title="voir la page d'inscription">S'INSCRIRE</a></li>
+                </ul>
+            </div>
+
+            <div class="hierarchie">
+                    <p:contentFlow value="#{panelWiew.images}" var="image">
+                            <p:graphicImage name="imagesmetier/#{image}" styleClass="content" />
+                            <div class="caption">#{image}</div>
+                    </p:contentFlow>
+            </div>
+            <div class="contenu">
+                <div class="colonnegauche">
+                    <div class="menurubriques">
+                        <div class="titremenu" style="color: darkblue; padding: 10px"> VOUS ÊTES UN PARTICULIER ? :</div>
+                        <ol><li>Créer vos Contrat</li>
+                            <li>Gérer vos Factures</li>
+                            <li>Editer vos Devis</li></ol>
+                        <div class="titremenu" style="color: darkblue; padding: 10px"> VOUS ÊTES UN PROFESSIONNEL ? :</div>
+                        <ol>
+                            <li> Nos experts sont à votre disposition </li>
+                        </ol>
+                        <div class="titremenu" style="color: darkblue; padding: 10px"> VOUS ÊTES UN COMMERCIAL ? :</div>
+                        <ol>
+                            <li> Nous vous accompagnos </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="colonnecentre" title="COLONNE CENTRE">
+                    <div class="descriptif">[(#DESCRIPTIF)]</div>
+                    <div class="texte">
+                        <p align="justify">
+                            <strong>Le discours le plus célèbre de Martin Luther King</strong>,
+                            prononcé le 28/08/1963, lors de la marche sur Washington,
+                            devant 250 000 personnes. (Vidéo et discours complet ici)
+                            "Je fais un rêve" (Vidéo en bas)
+                            J'ai fait un rêve, qu’un jour, cette nation se lèvera et vivra
+                            la vrai signification de sa croyance : "Nous tenons ces vérités comme
+                            allant de soi, que les hommes naissent égaux."
+
+                            Quand nous laisserons retentir la liberté, quand nous la laisserons
+                            retentir de chaque village et de chaque lieu-dit, de chaque état et
+                            de chaque ville, nous ferons approcher ce jour quand tous les enfants de Dieu,
+                            Noirs et Blancs, Juifs et Gentils, Catholiques et Protestants,
+                            pourront se prendre par la main et chanter les paroles du vieux spiritual noir,
+                            "Enfin libres! Enfin libres! Dieu Tout-Puissant, merci, nous sommes enfin libres!"
+                        </p>
+                    </div>
+                </div>
+                <div class="colonnedroite">
+                    <div class="menurubriques">
+                        <ol>
+                            <li>contrat entre  deux entreprises</li>
+                            <li>contrat d'embauche</li>
+                            <li>contrat de bail</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="fin">
+                <div style="float: left ; color: darkblue; padding: 10px"> Réglémentations
+                    <ol>
+                        <li><a href="index.xhtml" title="voir la page de connexion">Se connecter</a></li>
+                        <li><a href="#Adresse">Nous contacter</a></li>
+                        <li><a href="#">Nos activités</a></li>
+                    </ol>
+                </div>
+                <div style="float: left; color: red; padding: 10px"> Nos partenaires sociaux
+                    <ul>
+                        <li><a href="https://fr-fr.facebook.com/" title="Connexion facebook" target="_blank">Facebook</a></li>
+                        <li><a href="#" >Twiter</a></li>
+                        <li><a href="https://cyralex21.visualstudio.com/INTEXO/_backlogs?level=Features&amp;showParents=false&amp;_a=backlog" title="Product backlog" target="_blank">VisualStudio</a></li>
+
+                    </ul>
+                </div>
+                <div style="float:right; padding: 10px; color: chocolate" id="Contact">Nous Contacter
+                    <ul>
+                        <li><a href="#" name="NOUS CONTACTER" title="11 rue d'Iena, 89000 Auxerre">Adresse</a></li>
+                        <li><a href="mailto:elkyach@yahoo.fr" title="elkyach@yahoo.fr">E-mail</a></li>
+                        <li><a href="#" title="0669536416">Téléphone</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </h:body>
+</html>
