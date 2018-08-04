@@ -128,4 +128,8 @@ public class Facturation implements Serializable{
     public void setEncaissement(String encaissement) {
         this.encaissement = encaissement;
     }
+    @Override
+    public String toString() {
+        return libelle;
+    }
 }

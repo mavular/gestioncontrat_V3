@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="layouts/template.xhtml">
+<ui:define name="titre">
+    <h:outputText value="CREER UN CONTRAT" />
+</ui:define>
+<ui:define name="conten">
+    <div align="center" style="color:chartreuse;font-family:cursive" >
+        <h1>VEUILLEZ REMPLIR LES CHAMPS DU CONTRAT</h1>
+    </div>
+    <p>
+        <a href="accueil.xhtml">Retour Accueil</a><br/>
+        <a href="modelecontrat.xhtml">Voir un modèle de Contrat</a>
+    </p>
+    <p style="color: #c82333">
+        <a href="affichagecontrat.xhtml">Mon Contrat</a>
+    </p>
+    <div class="contents">
+    <div class="row">
+    <div class="col-lg-12">
+        <h1 align="center"><i>Contrat de : <h:outputText style="color: blue" value="#{contratView.titre}" /></i></h1><br/>
+
+
+        <h:form>
+
+            <p:fragment>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="titre" value="Titre: *" />
+                    <p:inputText id="titre" value="#{contratView.titre}" required="true" label="Titre" />
+                    <h:outputLabel for="nom" value="Nom (votre société):" />
+                    <p:inputText id="nom" value="#{contratView.nom}" required="true" label="Nom (votre société)"/>
+                    <h:outputLabel for="capital" value="Capital: *" />
+                    <p:inputText id="capital" value="#{contratView.capital}" required="true" label="Capital" />
+                    <h:outputLabel for="adresse" value="Adresse: *" />
+                    <p:inputText id="adresse" value="#{contratView.adresse}" required="true" label="Adresse" />
+                    <h:outputLabel for="villederegistre" value="Ville de Régistre :" />
+                    <p:inputText id="villederegistre" value="#{contratView.villederegistre}" required="true" label="Ville de Régistre"/>
+                    <h:outputLabel for="numeroderegistre" value="Numéro de Régistre :" />
+                    <p:inputText id="numeroderegistre" value="#{contratView.numeroderegistre}" required="true" label="Numéro de Régistre"/>
+                    <h:outputLabel for="representant" value="Représentant: *" />
+                    <p:inputText id="representant" value="#{contratView.representant}" required="true" label="Représentant" />
+
+                    <h:outputLabel for="nomclient" value="Nom société cliente :" />
+                    <p:inputText id="nomclient" value="#{contratView.nomClient}" required="true" label="Nom société cliente"/>
+                    <h:outputLabel for="capitalClient" value="Capital (société Cliente): *" />
+                    <p:inputText id="capitalClient" value="#{contratView.capitalClient}" required="true" label="Capital (société Client)" />
+                    <h:outputLabel for="adresseClient" value="Adresse du Client: *" />
+                    <p:inputText id="adresseClient" value="#{contratView.adresseClient}" required="true" label="Adresse du Client" />
+                    <h:outputLabel for="villederegistreClient" value="Ville de Régistre du Client :" />
+                    <p:inputText id="villederegistreClient" value="#{contratView.villederegistreClient}" required="true" label="Ville de Régistre du Client"/>
+                    <h:outputLabel for="numeroderegistreClient" value="Numéro de Régistre du Client :" />
+                    <p:inputText id="numeroderegistreClient" value="#{contratView.numeroderegistreClient}" required="true" label="Numéro de Régistre du Client"/>
+                    <h:outputLabel for="representantClient" value="Représentant du Client: *" />
+                    <p:inputText id="representantClient" value="#{contratView.representantClient}" required="true" label="Représentant du Client" />
+
+                    <h:outputLabel for="sommeforfaitaire" value="Somme forfaitaire: *" />
+                    <p:inputText id="sommeforfaitaire" value="#{contratView.sommeforfaitaire}" required="true" label="Somme forfaitaire" />
+                    <h:outputLabel for="dureecontrat" value="Durée du contrat: *" />
+                    <p:inputText id="dureecontrat" value="#{contratView.dureecontrat}" required="true" label="Durée du contrat" />
+                    <h:outputLabel for="datedebut" value="Date de debut de contrat: *" />
+                    <p:inputText id="datedebut" value="#{contratView.datedebut}" label="Date de debut de contrat" />
+                    <h:outputLabel for="datefin" value="Date de fin de contrat: *" />
+                    <p:inputText id="datefin" value="#{contratView.datefin}" label="Date de fin de contrat" />
+
+                    <h:outputLabel for="datedelaipreetudeClient" value="Date delai préétude Client: *" />
+                    <p:inputText id="datedelaipreetudeClient" value="#{contratView.datedelaipreetudeClient}" label="Date delai préétude Client" />
+                    <h:outputLabel for="datedelaicahierdescharges" value="Date delai du cahier des charges:" />
+                    <p:inputText id="datedelaicahierdescharges" value="#{contratView.datedelaicahierdescharges}" label="Date delai du cahier des charges"/>
+                    <h:outputLabel for="datedelairapport" value="Date delai du rapport: *" />
+                    <p:inputText id="datedelairapport" value="#{contratView.datedelairapport}" label="Date delai du rapport" />
+                    <h:outputLabel for="datedelaiprerapport" value="Date delai prérapport: *" />
+                    <p:inputText id="datedelaiprerapport" value="#{contratView.datedelaiprerapport}" label="Date delai prérapport" />
+                    <h:outputLabel for="datedelairapportterminal" value="Date delai rapport terminal :" />
+                    <p:inputText id="datedelairapportterminal" value="#{contratView.datedelairapportterminal}" label="Date delai rapport terminal"/>
+                    <h:outputLabel for="fraisparjourderetard" value="Frais par jour de retard :" />
+                    <p:inputText id="fraisparjourderetard" value="#{contratView.fraisparjourderetard}" required="true" label="Frais par jour de retard"/>
+
+                    <p:commandButton action="affichagecontrat.xhtml" value="Valider"/>
+
+                </h:panelGrid>
+            </p:fragment>
+
+        </h:form>
+    </div>
+
+    </div>
+    </div>
+</ui:define>
+</ui:composition>
+</html>

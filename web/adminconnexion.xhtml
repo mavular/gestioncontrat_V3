@@ -1,4 +1,4 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,13 +8,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
-
-<ui:composition template="../layouts/template.xhtml">
+<ui:composition template="layouts/template.xhtml">
     <ui:define name="titre">
-        <h:outputText value="Page administration" />
+        <h:outputText value="PAGE D'ADMINISTRATION"/>
     </ui:define>
-    <ui:define name="content">
+    <ui:define name="conten">
+        <div align="center" style="color:red;font-family:cursive" >
+            <h1>VEUILLEZ REMPLIR LES CHAMPS D'INSCRIPTION</h1>
+        </div>
+        <div class="navg">
+            <p><a href="accueil.xhtml">Retour Accueil</a></p>
+        </div>
+        <div class="content">
         <h:form>
             <p:growl id="msgs" showDetail="true" autoUpdate="true"/>
             <p:selectOneMenu value="#{serviceAdmin.selection}" converter="#{classConverter}">
@@ -32,7 +37,7 @@
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
-            <!-<p:dataTable value="#{serviceAdmin.mydata}" var="c" editable="true" id="dt">-->
+            <!--<p:dataTable value="#{serviceAdmin.mydata}" var="c" editable="true" id="dt">-->
             <!--<p:ajax event="rowEdit"  listener="#{serviceAdmin.onRowEdit}"  update="dt"/>-->
             <!--<p:ajax event="rowEditCancel" listener="#{serviceAdmin.onRowCancel}" update="dt" />-->
             <!--<p:columns  value="#{serviceAdmin.columns}" var="column" headerText="#{column.header}">-->
@@ -58,13 +63,13 @@
             <!--</p:commandButton>-->
             <!--</p:column>-->
             <!--</p:dataTable>-->
-            <!--Message de confirmation de suppression->
+            <!--Message de confirmation de suppression-->
             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                 <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
         </h:form>
+        </div>
     </ui:define>
 </ui:composition>
 </html>
--->

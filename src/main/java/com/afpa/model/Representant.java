@@ -66,4 +66,9 @@ public class Representant implements Serializable {
     public void setTitre(String titre) {
         this.titre = titre;
     }
+
+    @Override
+    public String toString() {
+        return titre;
+    }
 }

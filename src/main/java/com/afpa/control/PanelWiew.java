@@ -15,7 +15,7 @@ import java.util.List;
 @Named
 @SessionScoped
 //@ManagedBean
-public class PanelWiew implements Serializable{
+public class PanelWiew implements Serializable {
     private String titre;
     private String bouton;
     private List<String> images;
@@ -41,9 +41,10 @@ public class PanelWiew implements Serializable{
     public void init() {
         images = new ArrayList<String>();
         for (int i = 1; i <= 12; i++) {
-        images.add("artisant" + i + ".png");
+            images.add("artisant" + i + ".png");
         }
     }
+
     public List<String> getImages() {
         return images;
     }
@@ -58,7 +59,19 @@ public class PanelWiew implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+    public String getTitre() {
+        return titre;
+    }
 
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
 
 }
+/*
+    public void handleKeyEvent() {
+        text = text.toUpperCase();
+    }
+*/
+
 

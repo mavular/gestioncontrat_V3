@@ -102,5 +102,6 @@ public class ServiceUtilisateur implements Serializable
     {
         return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal();
     }
+
 }
 

@@ -75,4 +75,9 @@ public class Typecontrat implements Serializable{
     public void setModalites(String modalites) {
         this.modalites = modalites;
     }
+
+    @Override
+    public String toString() {
+        return libelle;
+    }
 }
