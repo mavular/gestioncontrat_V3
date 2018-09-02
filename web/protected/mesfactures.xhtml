@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../layouts/template.xhtml">
+    <ui:define name="titre">
+        <h:outputText value="MES FACTURES" />
+    </ui:define>
+    <ui:define name="conten">
+        <div align="center" style="color:chartreuse;font-family:cursive" >
+            <h1>TABLEAU D'AFFICHAGE DES FACTURES</h1>
+        </div>
+        <p style="color: #c82333">
+            <a href="../accueil.xhtml">Retour Accueil</a><br/>
+            <a href="../creerfacture.xhtml">créer une Facture</a><br/>
+            <a href="../affichagefacture.xhtml">Ma dernière facture</a><br/>
+            <a href="../afficheFactureViaDevis.xhtml">Mon facture générée via un devis</a><br/>
+            <a href="../protected/pageutilisateur.xhtml" title="voir toutes les fonctionalités">page utilisateur</a>
+        </p>
+        <div class="contents">
+            <div class="row">
+                <h:form>
+                    <p:commandButton value="La liste des factures" actionListener="#{factureView.getListfactures}" update="mesfacturestable"/>
+                </h:form>
+
+                <p:growl id="msg1" showDetail="false" autoUpdate="true"/>
+
+                <p:dataTable id="mesfacturestable" value="#{factureView.listfactures}" var="f">
+
+                    <p:column headerText="N°">
+                        <h:outputText value="#{f.numero}"/>
+                    </p:column>
+                    <p:column headerText="Libellé">
+                        <h:outputText value="#{f.libelle}"/>
+                    </p:column>
+                    <p:column headerText="Description">
+                        <h:outputText value="#{f.description}"/>
+                    </p:column>
+                    <p:column headerText="Date de facture">
+                        <h:outputText value="#{f.datefacture}"/>
+                    </p:column>
+                    <p:column headerText="Prestataire">
+                        <h:outputText value="#{f.prestataire}"/>
+                    </p:column>
+                    <p:column headerText="Client">
+                        <h:outputText value="#{f.client}"/>
+                    </p:column>
+                    <p:column headerText="Afficher">
+                        <p:commandButton value="OK" action="affichagefacture.xhtml"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="layouts/template.xhtml">
+    <ui:define name="titre">
+        <h:outputText value="PAGE LISTE DES PRODUITS"/>
+    </ui:define>
+    <ui:define name="conten">
+        <div align="center" style="color:red;font-family:cursive" >
+            <h1>Les Produits pour facture</h1>
+        </div>
+        <div class="navg">
+            <p><a href="accueil.xhtml">Retour Accueil</a><br/>
+                <a href="creerfacture.xhtml">créer une facture</a><br/>
+                <a href="affichagefacture.xhtml">ma facture</a>
+            </p>
+            <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+            <h:panelGroup id="connect">
+
+
+                <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+                <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+                <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+                <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+            </h:panelGroup>
+        </div>
+        <div class="content">
+            <h:form>
+                <h:outputLabel for="nom" value="Nom"/>
+                <p:inputText id="nom" value="#{factureView.produit.nom}"/>
+                <h:outputLabel for="description" value="Description"/>
+                <p:inputText id="description" value="#{factureView.produit.description}"/>
+                <h:outputLabel for="quantite" value="Quantité :" />
+                <p:inputText id="quantite" value="#{factureView.produit.quantite}"/><br/>
+                <h:outputLabel for="prixunitaire" value="Prix Unitaire"/>
+                <p:inputText id="prixunitaire" value="#{factureView.produit.prixunitaire}"/>
+                <h:outputLabel for="devise" value="Devise :" />
+                <p:inputText id="devise" value="#{factureView.produit.devise}"/>
+                <h:outputLabel for="tva" value="Tva produit :" />
+                <p:inputText id="tva" value="#{factureView.produit.tva}"/><br/>
+
+                <p:commandButton value="valider" actionListener="#{factureView.remplirProduit}" update="produitsfacture"/>
+                <input type="reset" value="effacer le champs"/><br/>
+                <p:commandButton value="effacer la liste" actionListener="#{factureView.effacerList}" update="produitsfacture"/>
+                <p:button value="quitter" outcome="creerfacture.xhtml" icon="ui-icon-arrowreturn-1-w"/><br/>
+
+            </h:form>
+
+            <p:dataTable id="produitsfacture" value="#{factureView.listproduits}" var="t">
+                <p:column headerText="Nom">
+                    <h:outputText value="#{t.nom}"/>
+                </p:column>
+                <p:column headerText="Description">
+                    <h:outputText value="#{t.description}"/>
+                </p:column>
+                <p:column headerText="Quantité">
+                    <h:outputText value="#{t.quantite}"/>
+                </p:column>
+                <p:column headerText="Prix Unitaire">
+                    <h:outputText value="#{t.prixunitaire}"/>
+                </p:column>
+                <p:column headerText="Devise">
+                    <h:outputText value="#{t.devise}"/>
+                </p:column>
+                <p:column headerText="Tva produit">
+                    <h:outputText value="#{t.tva}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>

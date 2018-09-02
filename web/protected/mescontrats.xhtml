@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../layouts/template.xhtml">
+    <ui:define name="titre">
+        <h:outputText value="MES CONTRATS" />
+    </ui:define>
+    <ui:define name="conten">
+        <div align="center" style="color:chartreuse;font-family:cursive" >
+            <h1>TABLEAU D'AFFICHAGE DES CONTRATS</h1>
+        </div>
+        <p style="color: #c82333">
+            <a href="../accueil.xhtml">Retour Accueil</a><br/>
+            <a href="../creercontrat.xhtml">créer un Contrat</a><br/>
+            <a href="../affichagecontrat.xhtml">Mon dernier Contrat</a><br/>
+            <a href="pageutilisateur.xhtml" title="voir toutes les fonctionalités">page utilisateur</a>
+        </p>
+        <div class="contents">
+            <div class="row">
+                <h:form>
+                    <p:commandButton value="La liste des contrats" actionListener="#{contratView.getListcontrats}" update="mescontratstable"/>
+                </h:form>
+
+                <p:growl id="msg1" showDetail="false" autoUpdate="true"/>
+
+                <p:dataTable id="mescontratstable" value="#{topControl.listcontrats}" var="c">
+
+                    <p:column headerText="N°">
+                        <h:outputText value="#{c.numero}"/>
+                    </p:column>
+                    <p:column headerText="Libellé">
+                        <h:outputText value="#{c.libelle}"/>
+                    </p:column>
+                    <p:column headerText="Descriptif">
+                        <h:outputText value="#{c.description}"/>
+                    </p:column>
+                    <p:column headerText="Date de début">
+                        <h:outputText value="#{c.datededebut}"/>
+                    </p:column>
+                    <p:column headerText="Date de fin">
+                        <h:outputText value="#{c.datedefin}"/>
+                    </p:column>
+                    <p:column headerText="Date de signature">
+                        <h:outputText value="#{c.datedesignature}"/>
+                    </p:column>
+                    <p:column headerText="Type de contrat">
+                        <h:outputText value="#{c.typecontrat}"/>
+                    </p:column>
+                    <p:column headerText="Afficher">
+                        <p:commandButton value="OK" action="affichagecontrat.xhtml"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

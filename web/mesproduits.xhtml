@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="layouts/template.xhtml">
+    <ui:define name="titre">
+        <h:outputText value="MES DEVIS" />
+    </ui:define>
+    <ui:define name="conten">
+        <div align="center" style="color:chartreuse;font-family:cursive" >
+            <h1>TABLEAU D'AFFICHAGE DES PRODUITS</h1>
+        </div>
+        <p style="color: #c82333">
+            <a href="creerdevis.xhtml">créer un Devis</a><br/>
+            <a href="affichagedevis.xhtml">Mon dernier Devis</a><br/>
+            <a href="afficheFactureViaDevis.xhtml">Ma facture générée</a>
+        </p>
+        <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+        <h:panelGroup id="connect">
+
+
+            <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+            <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+            <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+            <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+        </h:panelGroup>
+        <div class="contents">
+            <div class="row">
+
+                <h:form>
+                    <p:commandButton value="La liste des produits" actionListener="#{devisView.getListproduits()}" update="mesproduitstable"/>
+                </h:form>
+
+                <p:growl id="msg1" showDetail="false" autoUpdate="true"/>
+
+                <p:dataTable id="mesproduitstable" value="#{devisView.listproduits}" var="p">
+
+                    <p:column headerText="N°">
+                        <h:outputText value="#{p.id}"/>
+                    </p:column>
+                    <p:column headerText="Nom">
+                        <h:outputText value="#{p.nom}"/>
+                    </p:column>
+                    <p:column headerText="Description">
+                        <h:outputText value="#{p.description}"/>
+                    </p:column>
+                    <p:column headerText="Quantité">
+                        <h:outputText value="#{p.quantite}"/>
+                    </p:column>
+                    <p:column headerText="Prix unitaire">
+                        <h:outputText value="#{p.prixunitaire}"/>
+                    </p:column>
+                    <p:column headerText="Devise">
+                        <h:outputText value="#{p.devise}"/>
+                    </p:column>
+                    <p:column headerText="Tva">
+                        <h:outputText value="#{p.tva}"/>
+                    </p:column>
+                    <p:column headerText="Afficher">
+                        <p:button value="OK" outcome="affichagedevis.xhtml"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>MA FACTURE</title>
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+</h:head>
+<h:body>
+    <h3 style="color: #0c5460">MA FACTURE</h3>
+    <p><a href="accueil.xhtml" title="Retour à l'Accueil">Retour Accueil</a><br/>
+        <a href="creerfacture.xhtml" title="Retour à la page de création de Facture">retour page de saisie de la Facture</a>
+    </p>
+    <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+    <h:panelGroup id="connect">
+
+
+        <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+        <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+        <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+        <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+    </h:panelGroup>
+    <br/>
+    <div class="contents">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <h2><strong><h:outputText style="color: blue" value="#{factureView.facture.prestataire.nom}" /></strong></h2>
+                        <p><h:outputText style="color: blue" value="#{factureView.facture.prestataire.numerorue}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.prestataire.cp}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.prestataire.ville}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.prestataire.pays}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.prestataire.telephone}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.prestataire.email}" />
+                        </p>
+                    </div>
+                    <div class="col-lg-6 recepteur">
+                        <div class="col-lg-12" style="background-color: #20c997">
+                            <h1>FACTURE</h1>
+                        </div><br/>
+
+                        <p>N° Facture : </p>
+                        <p>N° Client :  </p><br/>
+
+                        <h2><strong><h:outputText style="color: blue" value="#{factureView.facture.client.nom}" /></strong></h2>
+                        <p><h:outputText style="color: blue" value="#{factureView.facture.client.numerorue}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.cp}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.ville}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.pays}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.telephone}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.email}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.representant}" /><br/>
+                            <h:outputText style="color: blue" value="#{factureView.facture.client.siret}" />
+                        </p><br/>
+
+                    </div>
+                </div>
+                <div class="col-lg-12 libelle" style="background-color: #20c997">
+                    <h3><h:outputText style="color: blue" value="#{factureView.facture.description}" /></h3>
+                    <br/>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p:dataTable id="produitsfacture" value="#{factureView.listproduits}" var="t">
+
+                                <p:column headerText="Nom">
+                                    <h:outputText value="#{t.nom}"/>
+                                </p:column>
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{t.description}"/>
+                                </p:column>
+                                <p:column headerText="Quantité">
+                                    <h:outputText value="#{t.quantite}"/>
+                                </p:column>
+                                <p:column headerText="Prix Unitaire">
+                                    <h:outputText value="#{t.prixunitaire}"/>
+                                </p:column>
+                                <p:column headerText="Devise">
+                                    <h:outputText value="#{t.devise}"/>
+                                </p:column>
+                                <p:column headerText="Tva produit">
+                                    <h:outputText value="#{t.tva}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6">
+                            <div class="col-lg-12">
+                                <table>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.calculTotal()}" /></td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.devise}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Remise</td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.calculRemise()}" /></td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.devise}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Hors Taxe</td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.calculTotalHt()}" /></td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.devise}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TVA</td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.calculTva()}" /></td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.devise}" /></td></tr>
+                                    <tr>
+                                        <td>TOTAL TTC</td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.calculTotalttc()}" /></td>
+                                        <td><h:outputText style="color: blue" value="#{factureView.devise}" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mentions">
+                    <p>Mentions légales</p>
+                    <p>Conditions de paiement : paiement à réception de facture, à 30 jours...
+                        Aucun escompte consenti pour règlement anticipé
+                        Tout incident de paiement est passible d'intérêt de retard. Le montant des pénalités résulte de
+                        l'application aux sommes restant dues d'un taux d'intérêt légal en vigueur au moment de l'incident.
+                        Indemnité forfaitaire pour frais de recouvrement due au créancier en cas de retard de paiement: 40€
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6"></div>
+                    <div class="col-lg-6" align="center">
+                        <p>Date : <h:outputText style="color: blue" value="#{factureView.datefacture.date}" /></p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6" align="center">
+                            <p><h:outputText style="color: blue" value="#{factureView.facture.prestataire.representant}" /></p>
+                            <p>Signature</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 footer2">
+                    <div class="row">
+                        <div class="col-lg-4" style="height: 100px"></div>
+                        <div class="col-lg-4" style="height: 100px"></div>
+                        <div class="col-lg-4" style="height: 100px; border: 1px solid black"></div>
+                    </div>
+                    <br/>
+                    <p align="center">N° Siret <h:outputText style="color: blue" value="#{factureView.facture.prestataire.siret}" /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p align="center"><a href="accueil.xhtml" title="retour à la page d'accueil">Retour Accueil</a></p>
+</h:body>
+</html>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>MON DEVIS</title>
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+</h:head>
+<h:body>
+    <h3 style="color: #005500">MON DEVIS</h3>
+    <p><a href="accueil.xhtml" title="Retour à l'Accueil">Retour Accueil</a><br/>
+        <a href="afficheFactureViaDevis.xhtml" title="Création automatique d'une facture liée au Devis">GENERER UNE FACTURE de ce devis</a><br/>
+        <a href="creerdevis.xhtml" title="Retour à la page de création du Devis">retour saisie du Devis</a><br/>
+        <a href="protected/mesdevis.xhtml" title="Voir la liste de mes devis">liste de mes devis</a>
+    </p>
+    <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+    <h:panelGroup id="connect">
+
+
+        <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+        <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+        <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+        <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+    </h:panelGroup>
+    <br/>
+    <div class="contents">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-2 menusecteur1">
+                        <p style="color: white"> LOGO<br/>SOCIETE<br/>_
+                            <h:outputText value="#{devisView.devis.prestataire.nom}" /></p>
+                    </div>
+                    <div class="col-lg-8">
+                        <h3><strong><h:outputText style="color: blue" value="#{devisView.devis.prestataire.nom}" /></strong></h3>
+                        <p><h:outputText style="color: blue" value="#{devisView.devis.prestataire.numerorue}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.prestataire.cp}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.prestataire.ville}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.prestataire.pays}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.prestataire.telephone}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.prestataire.email}" /></p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin: 5px">
+                <div class="row">
+                    <div class="col-lg-4" style="padding: 5px">
+                        <h3><h:outputText style="color: blue" value="#{devisView.devis.libelle}" /></h3>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-6" style="padding: 5px">
+                        <h3><strong><h:outputText style="color: blue" value="#{devisView.devis.client.nom}" /></strong></h3>
+                        <p><h:outputText style="color: blue" value="#{devisView.devis.client.numerorue}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.cp}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.ville}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.pays}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.telephone}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.email}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.representant}" /><br/>
+                            <h:outputText style="color: blue" value="#{devisView.devis.client.siret}" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 libelle" style="background-color: darkseagreen; margin-top: 5px">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>DEVIS N° :
+                            <h:outputText style="color: blue" value="#{devisView.devis.description}" /> :</h3>
+                    </div>
+                    <div class="col-lg-4" align="right">
+                        <h3><h:outputText style="color: blue" value="#{devisView.datedevis.date}" /></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin: 5px">
+                <div class="row">
+                    <div class="col-lg-12">
+                            <p:dataTable style="border-color: #c82333" id="ttable" value="#{devisView.listproduits}" var="t">
+
+                                <p:column headerText="Nom">
+                                    <h:outputText value="#{t.nom}"/>
+                                </p:column>
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{t.description}"/>
+                                </p:column>
+                                <p:column headerText="Quantité">
+                                    <h:outputText value="#{t.quantite}"/>
+                                </p:column>
+                                <p:column headerText="Prix Unitaire">
+                                    <h:outputText value="#{t.prixunitaire}"/>
+                                </p:column>
+                                <p:column headerText="Devise">
+                                    <h:outputText value="#{t.devise}"/>
+                                </p:column>
+                                <p:column headerText="Tva produit">
+                                    <h:outputText value="#{t.tva}"/>
+                                </p:column>
+
+                            <tr>
+                                <td>Sous-Total : <h:outputText style="color: blue" value="#{devisView.calculTotal()}" /></td>
+                            </tr>
+                            </p:dataTable>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 libelle" style="height:30px; background-color: darkseagreen"></div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td>%</td>
+                            <td>Remise</td>
+                            <td>TOTAL HT</td>
+                            <td>TVA</td>
+                            <td>TOTAL TTC</td>
+                            <td>Devise</td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText style="color: blue" value="#{devisView.calculTotal()}" /></td>
+                            <td><h:outputText style="color: blue" value="#{devisView.pourcentage}" /></td>
+                            <td><h:outputText style="color: blue" value="#{devisView.calculRemise()}" /></td>
+                            <td><h:outputText style="color: blue" value="#{devisView.calculTotalHt()}" /></td>
+                            <td><h:outputText style="color: blue" value="#{devisView.calculTva()}" /></td>
+                            <td><h:outputText style="color: blue" value="#{devisView.calculTotalttc()}" /></td>
+                            <td><h:outputText style="color: blue" value="#{devisView.devise}" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-12 mentions">
+                <p><strong>Mentions obligatoires :</strong><br/>
+                    40% à la commande, 60% à la fin<br/>
+                    Règlement par chèque bancaire<br/>
+                    Acompte à verser 8 jours après la commande ______
+                    <h:outputText style="color: blue" value="#{devisView.produit.getDevise()}" /><br/>
+                    Delai d'intervention à convenir<br/>
+                    En cas de commande vous disposerez d'un delai de rétraction de 14 jours<br/>
+                    Devis gratuit valide 60 jours<br/>
+                    En cas de litige, le tribunal de notre siège social est seul compétent<br/>
+                </p><br/>
+                <p>Bon pour accord et commande le : <h:outputText style="color: blue" value="#{devisView.datedevis.date}" /></p>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4" align="right">
+                        <p><h:outputText style="color: blue" value="#{devisView.devis.prestataire.representant}" /></p>
+                        <p>Signature</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 footer2">
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4" align="right" style="width: 90%; height: 100px; border: 1px solid black"></div>
+                </div><br/>
+                <p align="center">N° Siret <h:outputText style="color: blue" value="#{devisView.devis.prestataire.siret}" /></p>
+            </div>
+        </div>
+    </div>
+    <p align="center"><a href="afficheFactureViaDevis.xhtml" title="Création automatique d'une facture liée au Devis">GENERER UNE FACTURE de ce devis</a><br/>
+    </p>
+</h:body>
+</html>

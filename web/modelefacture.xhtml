@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+		PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xml:lang="en" lang="en"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>MODELE DE FACTURE</title>
+		<h:outputStylesheet library="css" name="style.css" />
+		<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+	</h:head>
+	<h:body>
+		<h3 style="color: #0c5460">MODELE DE FACTURE</h3>
+		<p><a href="accueil.xhtml" title="Retour à l'Accueil">Retour Accueil</a><br/>
+			<a href="modeledevis.xhtml" title="Modèle de Facture">Voir aussi un modèle de Devis</a><br/>
+			<a href="modelecontrat.xhtml" title="Modèle de Devis">Voir aussi un modèle de Contrat</a><br/>
+			<a href="admin/pageadministation.xhtml" title="voir toutes les fonctionalités">Page administration</a>
+		</p><br/>
+		<div class="contents">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-6">
+						<h2><strong>Société émétrice de la facture</strong></h2>
+						<p>N° de Rue<br/>
+							CP<br/>
+							Ville<br/>
+							Pays<br/>
+							Téléphone<br/>
+							E-mail</p>
+					</div>
+					<div class="col-lg-6 recepteur">
+						<div class="col-lg-12" style="background-color: #20c997">
+							<h1>FACTURE</h1>
+						</div><br/>
+
+						<p>N° Facture : 12589</p>
+						<p>N° Client :</p><br/>
+
+						<h2><strong>Nom du Client/ou de sa Société</strong></h2>
+						<p>N° de Rue<br/>
+							CP<br/>
+							Ville<br/>
+							Pays<br/>
+							Téléphone<br/>
+							E-mail</p><br/>
+					</div>
+			</div>
+			<div class="col-lg-12 libelle" style="background-color: #20c997">
+				<h3>Libellé de la Facture / Description de l'Objet du devis)</h3><br/>
+			</div>
+			<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-12">
+								<table>
+									<tr class="titre" style="color: #c82333">
+										<td>Numéro</td>
+										<td>Nom Produit</td>
+										<td>Description</td>
+										<td>Quantité</td>
+										<td>Prix Unitaire Ht</td>
+										<td>Devise</td>
+										<td>Prix Total Ht</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>Nom Produit P1</td>
+										<td>Description P1</td>
+										<td>Quantité P1</td>
+										<td>Prix Unitaire P1</td>
+										<td>Devise P1</td>
+										<td>Prix Total P1</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Nom Produit P2</td>
+										<td>Description P2</td>
+										<td>Quantité P2</td>
+										<td>Prix Unitaire P2</td>
+										<td>Devise P2</td>
+										<td>Prix Total P2</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Nom Produit P3</td>
+										<td>Description P3</td>
+										<td>Quantité P3</td>
+										<td>Prix Unitaire P3</td>
+										<td>Devise P3</td>
+										<td>Prix Total P3</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>Nom Produit P4</td>
+										<td>Description P4</td>
+										<td>Quantité P4</td>
+										<td>Prix Unitaire P4</td>
+										<td>Devise P4</td>
+										<td>Prix Total P4</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+				</div>
+				<div class="col-lg-12">
+						<div class="row">
+
+								<div class="col-lg-6"></div>
+								<div class="col-lg-6">
+									<div class="col-lg-12">
+										<table>
+											<tr>
+												<td>Total Hors Taxe</td>
+												<td>la somme</td>
+												<td>Devise</td>
+											</tr>
+											<tr>
+												<td>TVA à 22%</td>
+												<td>la somme</td>
+												<td>Devise</td></tr>
+											<tr>
+												<td>TOTAL TTC</td>
+												<td>la somme</td>
+												<td>Devise</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+				</div>
+				<div class="col-lg-12 mentions">
+					<p>Mentions légales</p>
+					<p>Conditions de paiement : paiement à réception de facture, à 30 jours...
+						Aucun escompte consenti pour règlement anticipé
+						Tout incident de paiement est passible d'intérêt de retard. Le montant des pénalités résulte de l'application aux sommes restant dues d'un taux d'intérêt légal en vigueur au moment de l'incident.
+						Indemnité forfaitaire pour frais de recouvrement due au créancier en cas de retard de paiement: 40€
+					</p>
+				</div>
+				<div class="col-lg-12">
+					<div class="col-lg-6"></div>
+					<div class="col-lg-6" align="center">
+						<p>Date :</p>
+					</div>
+				</div>
+				<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-6"></div>
+							<div class="col-lg-6" align="center">
+								<p>Signature</p>
+							</div>
+						</div>
+				</div>
+				<div class="col-lg-12 footer2">
+							<div class="row">
+								<div class="col-lg-4" style="height: 100px"></div>
+								<div class="col-lg-4" style="height: 100px"></div>
+								<div class="col-lg-4" style="height: 100px; border: 1px solid black"></div>
+							</div>
+					<br/>
+					<p align="center">N° Siret 210.896.764 00015 RCS Montpellier
+						Code APE 947A - N° TVA Intracom. FR 77825896764000</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p align="center"><a href="accueil.xhtml" title="retour à la page d'accueil">Retour Accueil</a></p>
+	</h:body>
+</html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="layouts/template.xhtml">
+    <ui:define name="titre">
+        <h:outputText value="CREER UNE FACTURE" />
+    </ui:define>
+    <ui:define name="conten">
+        <div align="center" style="color:chartreuse;font-family:cursive" >
+            <h1>VEUILLEZ REMPLIR LES CHAMPS DE LA FACTURE</h1>
+        </div>
+        <p style="color: #c82333">
+            <a href="accueil.xhtml" title="retour à la page d'Accueil">Retour Accueil</a><br/>
+            <a href="modelefacture.xhtml" title="Voir un modèle de devis">Modèle de Facture</a><br/>
+            <a href="affichagefacture.xhtml" title="récupérer le devis saisi">Ma Facture</a><br/>
+            <a href="protected/mesfactures.xhtml" title="Voir la liste de mes devis">liste de mes Factures</a>
+        </p>
+        <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+        <h:panelGroup id="connect">
+
+
+            <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+            <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+            <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+            <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+        </h:panelGroup>
+        <h:form>
+            <p:commandButton value="Voir le Tableau des factures" actionListener="#{factureView.getListfactures()}" onclick="PF('dlg').show();" update="mesfacttable"/>
+            <p:dialog showEffect="slide" hideEffect="explose"
+                      widgetVar="dlg" modal="true" header="Liste de mes Facture"
+                      width="400px" height="300px">
+                <p:dataTable id="mesfacttable" value="#{factureView.listfactures}" var="d">
+
+                    <p:column headerText="N°">
+                        <h:outputText value="#{d.numero}"/>
+                    </p:column>
+                    <p:column headerText="Libellé">
+                        <h:outputText value="#{d.libelle}"/>
+                    </p:column>
+                    <p:column headerText="Description">
+                        <h:outputText value="#{d.description}"/>
+                    </p:column>
+                    <p:column headerText="Date du devis">
+                        <h:outputText value="#{d.datefacture}"/>
+                    </p:column>
+                    <p:column headerText="Prestataire">
+                        <h:outputText value="#{d.prestataire}"/>
+                    </p:column>
+                    <p:column headerText="Client">
+                        <h:outputText value="#{d.client}"/>
+                    </p:column>
+                    <p:column headerText="Afficher">
+                        <p:button value="OK" outcome="affichagefacture.xhtml"/>
+                    </p:column>
+                    <p:commandButton value="fermer" onclick="PF('dlg').hide();"/>
+                </p:dataTable>
+
+            </p:dialog>
+        </h:form>
+        <div class="contents">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 align="center"><i>Facture de : <h:outputText style="color: blue" value="#{factureView.facture.libelle}" /></i></h1><br/>
+
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true" autoUpdate="true"/>
+
+                        <p:fragment>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputLabel for="produit" value="Saisir les produits : *" />
+                                <p:button id="produit" value="Click pour saisir" outcome="produitsfacture.xhtml" />
+                                <h:outputLabel for="devise" value="Devise (Euro/USD ...): *" />
+                                <p:inputText id="devise" value="#{factureView.devise}" />
+                                <h:outputLabel for="titre" value="Titre: *" />
+                                <p:inputText id="titre" value="#{factureView.facture.libelle}" label="Titre" />
+                                <h:outputLabel for="description" value="Description de la Facture: *" />
+                                <p:inputText id="description" value="#{factureView.facture.description}" />
+
+                                <h:outputLabel for="nom" value="Nom (votre société):" />
+                                <p:inputText id="nom" value="#{factureView.facture.prestataire.nom}" label="Nom (votre société)" />
+                                <h:outputLabel for="votrequalification" value="Qualification (votre société): *" />
+                                <p:inputText id="votrequalification" value="#{factureView.facture.prestataire.qualification}" label="Qualification (votre société)" />
+                                <h:outputLabel for="numerorue" value="N° et Rue (Votre Adresse): *" />
+                                <p:inputText id="numerorue" value="#{factureView.facture.prestataire.numerorue}" label="N° et Rue (Votre Adresse)" />
+                                <h:outputLabel for="cp" value="CP : *" />
+                                <p:inputText id="cp" value="#{factureView.facture.prestataire.cp}" label="Cp" />
+                                <h:outputLabel for="ville" value="Ville :" />
+                                <p:inputText id="ville" value="#{factureView.facture.prestataire.ville}" label="Ville" />
+                                <h:outputLabel for="pays" value="Pays :" />
+                                <p:inputText id="pays" value="#{factureView.facture.prestataire.pays}" label="Pays" />
+                                <h:outputLabel for="telephone" value="Téléphone : *" />
+                                <p:inputText id="telephone" value="#{factureView.facture.prestataire.telephone}" label="Téléphone" />
+                                <h:outputLabel for="email" value="E-mail :" />
+                                <p:inputText id="email" value="#{factureView.facture.prestataire.email}" label="E-mail" />
+                                <h:outputLabel for="representant" value="Votre Représentant : *" />
+                                <p:inputText id="representant" value="#{factureView.facture.prestataire.representant}" placeholder="Nom / qualité" label="Votre Représentant" />
+                                <h:outputLabel for="siret" value="N° Siret : *" />
+                                <p:inputText id="siret" value="#{factureView.facture.prestataire.siret}" label="N° Siret" />
+
+                                <h:outputLabel for="nomClient" value="Nom (société Cliente): *" />
+                                <p:inputText id="nomClient" value="#{factureView.facture.client.nom}" label="Nom (société Cliente)" />
+                                <h:outputLabel for="qualification" value="Qualification Cliente: *" />
+                                <p:inputText id="qualification" value="#{factureView.facture.client.qualification}" label="Qualification Cliente" />
+                                <h:outputLabel for="numerorueClient" value="N° et Rue (Adresse du Client) : *" />
+                                <p:inputText id="numerorueClient" value="#{factureView.facture.client.numerorue}" label="N° et Rue (Adresse du Client)" />
+                                <h:outputLabel for="cpClient" value="CP (Client) :" />
+                                <p:inputText id="cpClient" value="#{factureView.facture.client.cp}" label="CP (Client)" />
+                                <h:outputLabel for="villeClient" value="Ville (Client) :" />
+                                <p:inputText id="villeClient" value="#{factureView.facture.client.ville}" label="Ville (Client)" />
+                                <h:outputLabel for="paysClient" value="Pays (Client) : *" />
+                                <p:inputText id="paysClient" value="#{factureView.facture.client.pays}" label="Pays (Client)" />
+                                <h:outputLabel for="telephoneClient" value="Téléphone (Client) : *" />
+                                <p:inputText id="telephoneClient" value="#{factureView.facture.client.telephone}" label="Téléphone (Client)" />
+                                <h:outputLabel for="emailClient" value="E-mail (Client) : *" />
+                                <p:inputText id="emailClient" value="#{factureView.facture.client.email}" label="E-mail (Client)" />
+                                <h:outputLabel for="representantclient" value="Représentant Client : *" />
+                                <p:inputText id="representantclient" value="#{factureView.facture.client.representant}" placeholder="Nom / qualité" label="Représentant Client" />
+                                <h:outputLabel for="siretclient" value="N° Siret Client: *" />
+                                <p:inputText id="siretclient" value="#{factureView.facture.client.siret}" label="N° Siret Client" />
+
+
+                                <h:outputLabel for="dateemission" value="Date d'émission du devis : *" />
+                                <p:calendar id="dateemission" value="#{factureView.datefacture.date}" pattern="yyyy-MM-dd" locale="fr" label="Date d'émission du devis" />
+                                <h:outputLabel for="pourcentage" value="Pourcentage de remise : *" />
+                                <p:inputText id="pourcentage" value="#{factureView.pourcentage}" label="Pourcentage de remise" />
+
+                                <p:button outcome="affichagefacture.xhtml" value="Voir la Facture"/>
+                                <p:commandButton value="ENREGISTRER Facture" actionListener="#{factureView.addFacture()}" />
+                            </h:panelGrid>
+                        </p:fragment>
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

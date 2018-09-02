@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>MODELE DE DEVIS</title>
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+</h:head>
+<h:body>
+    <h3 style="color: #005500">MODELE DE DEVIS</h3>
+    <p><a href="accueil.xhtml" title="Retour à l'Accueil">Retour Accueil</a><br/>
+        <a href="modelefacture.xhtml" title="Modèle de Facture">Voir aussi un modèle de Facture</a><br/>
+        <a href="modelecontrat.xhtml" title="Modèle de Contrat">Voir aussi un modèle de Contrat</a><br/>
+        <a href="admin/pageadministation.xhtml" title="voir toutes les fonctionalités">Page administration</a>
+    </p><br/>
+    <div class="contents">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-2 menusecteur1">
+                        <p style="color: white"> LOGO<br/>SOCIETE<br/>_émétrice </p>
+                    </div>
+                    <div class="col-lg-8">
+                        <h3><strong>Société émétrice</strong></h3>
+                            <p>N° de Rue<br/>
+                            CP<br/>
+                            Ville<br/>
+                            Pays<br/>
+                            Téléphone<br/>
+                            E-mail</p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin: 5px">
+                <div class="row">
+                    <div class="col-lg-4" style="padding: 5px">
+                        <h3>Travaux de<br/> Construction</h3>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-6" style="padding: 5px">
+                        <h3><strong>Société Cliente</strong></h3>
+                        <p>N° de Rue<br/>
+                            CP<br/>
+                            Ville<br/>
+                            Pays<br/>
+                            Téléphone<br/>
+                            E-mail</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 libelle" style="background-color: darkseagreen; margin-top: 5px">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>DEVIS N° 1/ Libellé Prestation :</h3>
+                    </div>
+                    <div class="col-lg-4" align="right">
+                        <h3>Date d'émission</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin: 5px">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table style="border-color: #c82333">
+                            <tr>
+                                <td width="60%"></td>
+                                <td width="10%">Coût</td>
+                                <td width="10%">Quantité</td>
+                                <td width="10%">Prix U</td>
+                                <td width="10%">Total HT</td>
+                            </tr>
+                            <tr>
+                                <td>01 MENUSERIE INTERIEURE</td>
+                            </tr>
+                            <tr>
+                                <td width="60%">
+                                    <p><em>-1- Porte d'entrée Bois exotique</em><br/>
+                                        Mise en place de porte d'entrée en bois exotique du commerce comprenant :<br/>
+                                        - dépose de la porte existante, évaluation<br/>
+                                        - reprise des tableaux et des feuillures<br/>
+                                        - Cadre en bois exotique
+                                    </p>
+                                </td>
+                                <td width="10%"></td>
+                                <td width="10%">1</td>
+                                <td width="10%">1596,00</td>
+                                <td width="10%">Total HT</td>
+                            </tr>
+                            <tr>
+                                <td>Sous-Total : 1596,00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 libelle" style="height:30px; background-color: darkseagreen"></div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td>%</td>
+                            <td>Remise</td>
+                            <td>TOTAL HT</td>
+                            <td>TVA</td>
+                            <td>TOTAL TTC</td>
+                            <td>Devise</td>
+                        </tr>
+                        <tr>
+                            <td>1 595,00</td>
+                            <td>3,11</td>
+                            <td>49,55</td>
+                            <td>1 545,45</td>
+                            <td>154,55</td>
+                            <td>1 700,00</td>
+                            <td>Euros</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-12 mentions">
+                <p><strong>Mentions obligatoires :</strong><br/>
+                    40% à la commande, 60% à la fin<br/>
+                        Règlement par chèque bancaire<br/>
+                        Acompte à verser 8 jours après la commande 680 euros<br/>
+                        Delai d'intervention à convenir<br/>
+                        En cas de commande vous disposerez d'un delai de rétraction de 14 jours<br/>
+                        Devis gratuit valide 60 jours<br/>
+                        En cas de litige, le tribunal de notre siège social est seul compétent<br/>
+                    </p><br/>
+                    <p>Bon pour accord et commande le :</p>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4" align="right">
+                            <p>Signature</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 footer2">
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4" align="right" style="width: 90%; height: 100px; border: 1px solid black"></div>
+                </div><br/>
+                    <p align="center">N° Siret 210.896.764 00015 RCS Montpellier
+                        Code APE 947A - N° TVA Intracom. FR 77825896764000</p>
+            </div>
+        </div>
+    </div>
+        <p align="center"><a href="accueil.xhtml" title="retour à la page d'accueil">Retour Accueil</a></p>
+</h:body>
+</html>
