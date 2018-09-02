@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table
+@Table(name = "avenant")
 @NamedQueries({
         @NamedQuery(name = "Avenant.findAll",query = "select a from Avenant a"),
         @NamedQuery(name = "Avenant.findBylibelle",query = "select a from Avenant a where a.modalites=:modalites"),
@@ -21,7 +21,7 @@ public class Avenant implements Serializable {
     @Column(name = "dateavenant")
     private Date dateavenant;
     @ManyToOne
-    @JoinColumn(name="id_contrat")
+    @JoinColumn(name="numero")
     private Contrat contrat;
 
     public Avenant()

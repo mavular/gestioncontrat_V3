@@ -14,49 +14,71 @@
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
 </h:head>
 <h:body>
-    <h3 style="color: #c82333">MODELE DE CONTRAT</h3>
+    <h3 style="color: #c82333">MON CONTRAT</h3>
     <p><a href="accueil.xhtml" title="Retour à l'Accueil">Retour Accueil</a><br/>
-    <a href="creercontrat.xhtml" title="Retour à la page de création du Contrat">Retour Saisie du Contrat</a><br/>
-    <a href="pageadministation.xhtml" title="voir toutes les fonctionalités">Page administration</a>
-    </p><br/>
+    <a href="creercontrat.xhtml" title="Retour à la page de création du Contrat">Retour Saisie du Contrat</a>
+    </p>
+    <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+    <h:panelGroup id="connect">
+
+
+        <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+        <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+        <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+        <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+    </h:panelGroup>
+    <br/>
     <div class="contents">
         <div class="row">
             <div class="col-lg-12">
-                <h1 align="center"><i><h:outputText style="color: #c82333" value="#{contratView.titre}" /></i></h1><br/>
+                <p>CONTRAT N° ____</p>
+                <h1 align="center"><i><h:outputText style="color: #c82333" value="#{contratView.contrat.libelle}" /></i></h1><br/><br/>
             </div>
             <div class="col-lg-12">
                 <h2>ENTRE LES SOUSSIGNES</h2><br/>
-                <p>La société <h:outputText style="color: blue" value="#{contratView.nom}" />,
-                    au capital de <h:outputText style="color: blue" value="#{contratView.capital}" /> USD, dont
-                    le siège social est <h:outputText style="color: #0000ff" value="#{contratView.adresse}" />, enregistrée au Registre du Commerce et des
-                    Sociétés de <h:outputText style="color: #0000ff" value="#{contratView.villederegistre}" />
+                <p>La société <h:outputText style="color: blue" value="#{contratView.contrat.prestataire.nom}" />,
+                    au capital de <h:outputText style="color: blue" value="#{contratView.capital}" />
+                    <h:outputText style="color: blue" value="#{contratView.devise}" />, dont
+                    le siège social est <h:outputText style="color: #0000ff" value="#{contratView.contrat.prestataire.numerorue}" />,
+                    <h:outputText style="color: #0000ff" value="#{contratView.contrat.prestataire.cp}" />,
+                    <h:outputText style="color: #0000ff" value="#{contratView.contrat.prestataire.ville}" />,
+                    <h:outputText style="color: #0000ff" value="#{contratView.contrat.prestataire.pays}" />, enregistrée au Registre
+                    du Commerce et des Sociétés de <h:outputText style="color: #0000ff" value="#{contratView.villederegistre}" />
                     sous le numéro <h:outputText style="color: #0000ff" value="#{contratView.numeroderegistre}" />,
-                    Représentée par M. <h:outputText style="color: #0000ff" value="#{contratView.representant}" /> [nom
-                    et qualité],</p>
-                <p>ci-après désignée « Le Client », d'une part,</p>
-                <p>et</p>
-                <p>La société  <h:outputText style="color: #0000ff" value="#{contratView.nomClient}" />,
+                    Représentée par <h:outputText style="color: #0000ff" value="#{contratView.contrat.prestataire.representant}" />,
+                </p>
+                <p>d'une part,</p>
+                <p>et le client ci après</p>
+                <p>La société  <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.nom}" />,
                     Société [forme juridique] au capital de <h:outputText style="color: #0000ff" value="#{contratView.capitalClient}" />
-                    USD, dont le siège
-                    social est <h:outputText style="color: #0000ff" value="#{contratView.adresseClient}" />, enregistrée au Registre du Commerce
+                     <h:outputText style="color: blue" value="#{contratView.devise}" />, dont le siège
+                    social est <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.numerorue}" />,
+                    <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.cp}" />,
+                    <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.ville}" />,
+                    <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.pays}" />, enregistrée au Registre du Commerce
                     et des Sociétés de <h:outputText style="color: #0000ff" value="#{contratView.villederegistreClient}" /> sous
                     le numéro <h:outputText style="color: #0000ff" value="#{contratView.numeroderegistreClient}" />, représentée par
-                    M. <h:outputText style="color: #0000ff" value="#{contratView.representantClient}" /> [nom et qualité],</p>
-                <p>ci-après dénommée « le Prestataire de services » ou « le Prestataire », d'autre part,</p><br/>
-                <p>il a été convenu ce qui suit :</p><br/>
+                     <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.representant}" />,
+                </p>
+                <p>ci-après dénommée, d'autre part,</p><br/>
+                <br/>
             </div>
             <div class="col-lg-12">
                 <h2>PREAMBULE</h2><br/>
                 <p>Ceci exposé,<br/>
                     Il a été convenu ce qui suit :</p><br/>
                 <p><strong>Article premier - Objet</strong></p>
-                <p>Le présent contrat est un contrat de prestation de conseil ayant pour objet
-                    la mission définie au cahier
+                <p>Le présent contrat est un contrat de
+                    <h:outputText style="color: blue" value="#{contratView.contrat.typecontrat.libelle}" />
+                    ayant pour objet la mission définie au cahier
                     des charges annexé au présent contrat et en faisant partie intégrante.</p><br/>
                 <p><strong>Article 2 – Les frais</strong></p>
                 <p>En contrepartie de la réalisation des prestations définies à l'Article premier
                     ci-dessus, le client versera au prestataire la somme forfaitaire
-                    de <h:outputText style="color: #0000ff" value="#{contratView.sommeforfaitaire}" /> euros, ventilée de la manière suivante:<br/>
+                    de <h:outputText style="color: #0000ff" value="#{contratView.sommeforfaitaire}" />
+                    <h:outputText style="color: blue" value="#{contratView.devise}" />, ventilée de la manière suivante:<br/>
                     20% à la signature des présentes ;<br/>
                     30% au (n) jour suivant la signature des présentes ;<br/>
                     50% constituant le solde, à la réception de la tâche.<br/>
@@ -67,35 +89,36 @@
                     la réception de la facture, droits et taxes en sus.</p><br/>
                 <p><strong>Article 3 – Durée</strong></p>
                 <p>Ce contrat est passé pour une durée
-                    de <h:outputText style="color: #0000ff" value="#{contratView.dureecontrat}" /> ans. Il prendra effet
-                    le <h:outputText style="color: #0000ff" value="#{contratView.datedebut}" /> et arrivera à son
-                    terme le <h:outputText style="color: #0000ff" value="#{contratView.datefin}" />.</p><br/>
+                    de _____ jours. Il prendra effet
+                    le <h:outputText style="color: #0000ff" value="#{contratView.datededebut.date}" /> et arrivera à son
+                    terme le <h:outputText style="color: #0000ff" value="#{contratView.datedefin.date}" />.</p><br/>
                 <p><strong>Article 4 - Exécution de la prestation</strong></p>
                 <p> Le prestataire s'engage à mener à bien la tâche précisée à l'Article premier,
                     conformément aux règles de l'art et de la meilleure manière.<br/>
                     A cet effet, il constituera l'équipe nécessaire à la réalisation de la mission
                     et remettra, avant le rapport terminal, une pré-étude, au plus
-                    tard le <h:outputText style="color: #0000ff" value="#{contratView.datedelaipreetudeClient}" />.</p>
+                    tard le <h:outputText style="color: #0000ff" value="#{contratView.datedesignature.date}" />.</p>
                 <p><strong>4.1 Obligation de collaborer</strong></p>
                 <p>Le Client tiendra à la disposition du Prestataire toutes les informations
                     pouvant contribuer à la bonne réalisation de l'objet du présent contrat.
-                    A cette fin, le Client désigne deux interlocuteurs
-                    privilégiés (MM. <h:outputText style="color: #0000ff" value="#{contratView.nominterlocuteursClient}" />),
+                    A cette fin, le Client désigne son interlocuteur
+                    privilégié ( <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.representant}" />),
                     pour assurer le dialogue dans les diverses étapes de la mission contractée.</p>
                 <p><strong>4.2 (Clause facultative : Obligation du Client. Libre accès aux informations)</strong></p>
                 <p>Le Prestataire pourra avoir un accès libre à certaines catégories d'informations.
                     (Voir clause 4.1 précédente.)</p>
                 <p><strong>4.3 (Clause facultative : Obligation de réception)</strong></p>
-                <p> A la date du <h:outputText style="color: #0000ff" value="#{contratView.datedelairapport}" />, le Prestataire devra remettre un pré-rapport soumis
+                <p> A la date du <h:outputText style="color: #0000ff" value="#{contratView.datedesignature.date}" />,
+                    le Prestataire devra remettre un pré-rapport soumis
                     à la validation expresse du Client, pour que la phase suivante de la
                     mission puisse recevoir exécution.</p>
                 <p><strong>Article 5 – Calendrier. Délais</strong></p>
                 <p>La phase 1 définie au cahier des charges annexé aux présentes devra être achevée
-                    au plus tard le <h:outputText style="color: #0000ff" value="#{contratView.datedelaicahierdescharges}" />.<br/>
+                    au plus tard le <h:outputText style="color: #0000ff" value="#{contratView.datedesignature.date}" />.<br/>
                     La phase 2, assortie de la remise du pré-rapport devra être achevée au plus tard,
-                    le <h:outputText style="color: #0000ff" value="#{contratView.datedelaiprerapport}" /> .<br/>
+                    le <h:outputText style="color: #0000ff" value="#{contratView.datedefin.date}" /> .<br/>
                     La phase 3 et le rapport terminal devront être délivrés au plus tard
-                    le <h:outputText style="color: #0000ff" value="#{contratView.datedelairapportterminal}" />.</p>
+                    le <h:outputText style="color: #0000ff" value="#{contratView.datedefin.date}" />.</p>
                 <p><strong>Article 6 - Nature des obligations</strong></p>
                 <p>Pour l'accomplissement des diligences et prestations prévues à l'Article premier
                     ci-dessus, le Prestataire
@@ -129,10 +152,11 @@
                 <p><strong>Article 10 - Pénalités</strong></p>
                 <p>Toute méconnaissance des délais stipulés à l'article 5 ci-dessus, engendrera
                     l'obligation pour le Prestataire de payer au client la somme
-                    de <h:outputText style="color: #0000ff" value="#{contratView.fraisparjourderetard}" /> euros, par jour de retard.</p><br/>
+                    de <h:outputText style="color: #0000ff" value="#{contratView.fraisparjourderetard}" />
+                    <h:outputText style="color: blue" value="#{contratView.devise}" />, par jour de retard.</p><br/>
                 <p><strong>Article 11 - Résiliation. Sanction</strong></p>
                 <p>Tout manquement de l'une ou l'autre des parties aux obligations qu'elle a
-                    en charge, aux termes des articles (...), (...), ci-dessus, entraînera,
+                    en charge, aux termes des articles (5), (8), ci-dessus, entraînera,
                     si bon semble au créancier de l'obligation inexécutée, la résiliation de plein droit
                     au présent contrat, quinze jours après mise en demeure d'exécuter par
                     lettre recommandée avec accusé de réception demeurée sans effet, sans préjudice
@@ -140,11 +164,12 @@
                 <p><strong>Article 12 - Sous-traitance</strong></p>
                 <p>Les tâches précisées à l'Article premier ne seront pour ce qui concerne les
                     phases 1, 2 et 3, non prises en charge par le Prestataire, mais seront exécutées
-                    par la société _____________, en sous-traitance, ce que reconnaît et accepte le Client.
+                    par la société  <h:outputText style="color: #0000ff" value="#{contratView.contrat.client.representant}" />,
+                    en sous-traitance, ce que reconnaît et accepte le Client.
                     Le prestataire s'interdit de sous-traiter à quiconque la réalisation des
                     travaux définis à l'Article 1.</p><br/>
                 <p><strong>Article 13 - Clause de hardship</strong></p>
-                <p>Les parties reconnaissent que le présent accord ne constitue pas une base
+                <p>Si les parties reconnaissent que le présent accord ne constitue pas une base
                     équitable et raisonnable
                     de leur coopération.</p>
                 <p>Dans le cas où les données sur lesquelles est basé cet accord sont modifiées
@@ -164,7 +189,7 @@
                     de l'événement par la partie à l'origine
                     de la signification n'aura aucun effet.</p><br/>
                 <p><strong>Article 14 - Force majeure</strong></p>
-                <p>On entend par force majeure des événements de guerre déclarés ou non déclarés,
+                <p>On entend par force majeure des événements de guerre déclarées ou non déclarées,
                     de grève générale de travail, de maladies épidémiques, de mise en quarantaine,
                     d'incendie, de crues exceptionnelles,
                     d'accidents ou d'autres événements indépendants de la volonté des deux parties.<br/>
@@ -177,7 +202,7 @@
                     de la durée de la force majeure.</p><br/>
                 <p><strong>Article 15 - Loi applicable. Texte original</strong></p>
                 <p>Le contrat est régi par la loi du pays où le fabricant a son siège social.
-                    Le texte ______ [indication de la langue]
+                    Le texte en <h:outputText style="color: blue" value="#{contratView.languecontrat}" /> [indication de la langue]
                     du présent contrat fait foi comme texte original.</p><br/>
                 <p><strong>Article 16 - Compétence</strong></p>
                 <p>Toutes contestations qui découlent du présent contrat ou qui s'y
@@ -190,7 +215,8 @@
             </div>
             <div class="col-lg-12">
                 <div class="col-lg-8">
-                    <p>Fait le _____________ à _______________________ [en 6 exemplaires.]</p>
+                    <p>Fait le <h:outputText style="color: blue" value="#{contratView.datedesignature.date}" />
+                        à <h:outputText style="color: blue" value="#{contratView.villederegistre}" /> [en 6 exemplaires.]</p>
                 </div>
                 <div class="col-lg-4"></div>
             </div>

@@ -18,152 +18,53 @@
     </div>
     <div class="navg">
         <p><a href="accueil.xhtml" title="Retour à l'Accueil">Retour Accueil</a><br/>
-            <a href="creercontrat.xhtml" title="Vous pouvez créer un Contrat">remplir un Contrat</a><br/>
-            <a href="creerfacture.xhtml" title="Vous pouvez créer une Facture">remplir une Facture</a><br/>
-            <a href="creerdevis.xhtml" title="Vous pouvez créer un Devis">remplir un Devis</a><br/>
-            <a href="pageadministation.xhtml" title="voir toutes les manettes">Page administration</a>
+
         </p><br/>
     </div>
-    <div class="ui-g-12" style="width: 80%">
+    <div class="ui-g-12 content" style="width: 80%">
 
             <h:form>
                 <p:growl id="growl" sticky="true" showDetail="true"/>
-                <p:wizard flowListener="#{serviceUtilisateur.onFlowProcess}">
-                    <p:tab id="personal" title="Utilisateur">
+
                         <p:panel header="Utilisateur">
                             <h:panelGrid columns="2">
-                                <p:outputLabel value="Pseudo : " />
-                                <p:inputText id="Ps" value="#{serviceUtilisateur.u.pseudo}" validator="#{controlUtilLogin.ValidatePseudo}" />
-                                <p:outputLabel value="Mot de passe :*" />
-                                <p:password id="pwd" value="#{serviceUtilisateur.u.mdp1}" feedback="true" />
-                                <p:outputLabel value="Nom :*" />
+                                <h:outputLabel value="Pseudo : " />
+                                <p:inputText id="Ps" value="#{serviceUtilisateur.u.pseudo}"  />
+                                <h:outputLabel value="Mot de passe :*" />
+                                <p:password id="pwd" value="#{serviceUtilisateur.mdp}" feedback="true" />
+                                <h:outputLabel value="Nom :*" />
                                 <p:inputText id="n" value="#{serviceUtilisateur.u.nom}"  label="Nom"/>
-                                <p:outputLabel value="Prénom :*" />
+                                <h:outputLabel value="Prénom :*" />
                                 <p:inputText id="p" value="#{serviceUtilisateur.u.prenom}" label="Prénom"/>
-                                <p:outputLabel value="Groupe Social :*" />
-                                <p:inputText value="#{serviceUtilisateur.u.groupeSocial}" label="Groupe Social"/>
                                 <p:outputLabel value="Email :*" />
                                 <p:inputText value="#{serviceUtilisateur.u.email}"  label="Email"/>
                                 <p:outputLabel value="Profil :*" />
                                 <p:inputText id="pr" value="#{serviceUtilisateur.u.role}"  label="Profil"/>
-                                <p:outputLabel value="Passer : " />
-                                <h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />
+                                <p:outputLabel value="Téléphone :*" />
+                                <p:inputText value="#{serviceUtilisateur.u.telephone}" label="Téléphone"/>
+                                <p:outputLabel value="N° et Rue (Adresse) :*" />
+                                <p:inputText value="#{serviceUtilisateur.u.numerorue}" label="N° et Rue (Adresse)"/>
+                                <p:outputLabel value="Code postal"/>
+                                <p:inputText value="#{serviceUtilisateur.u.cp}" label="Code postal"/>
+                                <p:outputLabel value="ville"/>
+                                <p:inputText value="#{serviceUtilisateur.u.ville}" label="Ville"/>
+                                <p:outputLabel value="Pays"/>
+                                <p:inputText value="#{serviceUtilisateur.u.pays}" label="Pays"/>
+                                <p:outputLabel value="Date de Naissance :*" />
+                                <p:calendar value="#{serviceUtilisateur.u.datedenaissance}"  label="Date de Naissance" pattern="yyyy-MM-dd" locale="fr"/>
+
                             </h:panelGrid>
                         </p:panel>
-                    </p:tab>
-                    <p:tab id="confirm" title="Confirmation">
-                        <p:panel header="Confirmation">
-                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid">
-                                <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="Pseudo : " />
-                                    <h:outputText value="#{serviceUtilisateur.u.pseudo}" styleClass="outputLabel"/>
-                                    <h:outputText value="Nom : " />
-                                    <h:outputText value="#{serviceUtilisateur.u.nom}" styleClass="outputLabel"/>
-                                    <h:outputText value="Prénom : " />
-                                    <h:outputText value="#{serviceUtilisateur.u.prenom}" styleClass="outputLabel"/>
-                                    <h:outputText value="Groupe Social : " />
-                                    <h:outputText value="#{serviceUtilisateur.u.groupeSocial}" styleClass="outputLabel"/>
-                                    <h:outputText value="Email : " />
-                                    <h:outputText value="#{serviceUtilisateur.u.email}" styleClass="outputLabel"/>
-                                    <h:outputText value="Profil : " />
-                                    <h:outputText value="#{serviceUtilisateur.u.role}" styleClass="outputLabel"/>
-                                </h:panelGrid>
-                            </h:panelGrid>
-                            <p:commandButton value="Valider" actionListener="#{serviceUtilisateur.addUtilisateur}" update="growl,address,confirm"  icon="ui-icon-check"/>
-                            <p:button value="Retour Accueil" outcome="accueil.xhtml" icon="ui-icon-arrowreturn-1-w"/>
-                        </p:panel>
-                    </p:tab>
-                </p:wizard>
+
+
+                            <p:commandButton value="Valider" actionListener="#{serviceUtilisateur.addUtilisateur}" update="growl"  icon="ui-icon-check"/>
+                <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+                <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministration.xhtml" icon="ui-icon-pencil"/>
+                <p:commandButton type="reset"  value="effacer les champs" />
+                <p:button value="CONNECTEZ-VOUS" outcome="seconnecter.xhtml" icon="ui-icon-arrowreturn-1-w"/>
+
             </h:form>
     </div>
 </ui:define>
 </ui:composition>
 </html>
-<!--
-<h:form>
-        <p:growl id="growl" sticky="true" showDetail="true"/>
-
-        <p:wizard flowListener="#{serviceUtilisateur.onFlowProcess}">
-            <p:tab id="personal" title="Utilisateur">
-                <p:panel header="Utilisateur">
-                    <h:panelGrid columns="1" columnClasses="label, value">
-                        <p:outputLabel value="Pseudo : " />
-                        <p:inputText id="Ps" value="#{serviceUtilisateur.u.pseudo}" validator="#{controlUtilLogin.ValidatePseudo}" />
-                        <p:message for="Ps"/>
-
-                        <p:outputLabel value="Mot de passe :*" />
-                        <p:password id="pwd" value="#{serviceUtilisateur.u.mdp1}" feedback="true" />
-                        <p:message for="pwd" message="text"/>
-
-                        <p:outputLabel value="Nom :*" />
-                        <p:inputText id="n" value="#{serviceUtilisateur.u.nom}"  label="Nom"/>
-                        <p:message for="n" message="text"/>
-
-                        <p:outputLabel value="Prénom :*" />
-                        <p:inputText id="p" value="#{serviceUtilisateur.u.prenom}" label="Prénom"/>
-                        <p:message for="p" message="text"/>
-
-                        <!-<p:outputLabel value="Passer : " />-->
-        <!--<h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />-
-        </h:panelGrid>
-        </p:panel>
-        </p:tab>
-
-<p:tab id="address" title="Addresse">
-<p:panel header="Addresse ">
-    <h:panelGrid columns="1" columnClasses="label, value">
-        <p:outputLabel value="Groupe Social :*" />
-        <p:inputText value="#{serviceUtilisateur.u.groupeSocial}" label="Groupe Social"/>
-
-        <p:outputLabel value="Email :*" />
-        <p:inputText value="#{serviceUtilisateur.u.email}"  label="Email"/>
-
-        <p:outputLabel value="Profil :*" />
-        <p:inputText id="pr" value="#{serviceUtilisateur.u.profil}"  label="Profil"/>
-        <p:message for="pr" message="text"/>
-
-        <!-<p:outputLabel value="Passer : " />-->
-        <!--<h:selectBooleanCheckbox value="#{serviceUtilisateur.passer}" />-
-    </h:panelGrid>
-</p:panel>
-</p:tab>
-
-<p:tab id="confirm" title="Confirmation">
-<p:panel header="Confirmation">
-    <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid">
-        <h:panelGrid columns="2" columnClasses="label, value">
-            <h:outputText value="Pseudo : " />
-            <h:outputText value="#{serviceUtilisateur.u.pseudo}" styleClass="outputLabel"/>
-
-            <h:outputText value="Nom : " />
-            <h:outputText value="#{serviceUtilisateur.u.nom}" styleClass="outputLabel"/>
-
-            <h:outputText value="Prénom : " />
-            <h:outputText value="#{serviceUtilisateur.u.prenom}" styleClass="outputLabel"/>
-
-        </h:panelGrid>
-
-        <h:panelGrid columns="2" columnClasses="label, value">
-            <h:outputText value="Groupe Social : " />
-            <h:outputText value="#{serviceUtilisateur.u.groupeSocial}" styleClass="outputLabel"/>
-
-            <h:outputText value="Email : " />
-            <h:outputText value="#{serviceUtilisateur.u.email}" styleClass="outputLabel"/>
-
-            <h:outputText value="Profil : " />
-            <h:outputText value="#{serviceUtilisateur.u.profil}" styleClass="outputLabel"/>
-        </h:panelGrid>
-
-    </h:panelGrid>
-
-    <p:commandButton value="Valider" actionListener="#{serviceUtilisateur.addUtilisateur}" update="growl"  icon="ui-icon-check"/>
-    <p:button value="Retour Accueil" outcome="/accueil.xhtml" icon="ui-icon-arrowreturn-1-w"/>
-</p:panel>
-</p:tab>
-        </p:wizard>
-        </h:form>
-        </ui:define>
-
-        </ui:composition>
-        </html>
--->

@@ -5,28 +5,27 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "devis")
+@Table(name = "facture")
 @NamedQueries({
-        @NamedQuery(name="Devis.findAll", query = "SELECT d FROM Devis d"),
-        @NamedQuery(name="Devis.findBynumero", query = "SELECT d FROM Devis d WHERE d.numero = :numero"),
-        @NamedQuery(name="Devis.findBylibelle", query = "SELECT d FROM Devis d WHERE d.libelle = :libelle"),
-        @NamedQuery(name="Devis.findBydescription", query = "SELECT d FROM Devis d WHERE d.description = :description"),
-        @NamedQuery(name="Devis.findBydatedevis", query = "SELECT d FROM Devis d WHERE d.datedevis = :datedevis"),
-        @NamedQuery(name="Devis.findByUser", query = "SELECT d FROM Devis d WHERE d.utilisateur = :utilisateur"),
-        @NamedQuery(name="Devis.findByPrestataire", query = "SELECT d FROM Devis d WHERE d.prestataire = :prestataire")
+        @NamedQuery(name="Facture.findAll", query = "SELECT f FROM Facture f"),
+        @NamedQuery(name="Facture.findbynumero", query = "SELECT f FROM Facture f WHERE f.numero = :numero"),
+        @NamedQuery(name="Facture.findBylibelle", query = "SELECT f FROM Facture f WHERE f.libelle = :libelle"),
+        @NamedQuery(name="Facture.findBydescription", query = "SELECT f FROM Facture f WHERE f.description = :description"),
+        @NamedQuery(name="Facture.findbydatefacture", query = "SELECT f FROM Facture f WHERE f.datefacture = :datefacture")
 
 })
-public class Devis implements Serializable {
+
+public class Facture implements Serializable{
     @Id
-    @ GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer numero;
-    @Column(name = "libelle")
+    @Column (name = "libelle")
     private String libelle;
     @Column(name = "description")
     private String description;
     @ManyToOne
     @JoinColumn(name = "date")
-    private Datee datedevis;
+    private Datee datefacture;
     @ManyToOne
     @JoinColumn(name = "pseudo")
     private Utilisateur utilisateur;
@@ -36,13 +35,15 @@ public class Devis implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_entreprise")
     private Entreprise client;
-    @ManyToMany(mappedBy = "lesdevis")
+    @ManyToMany(mappedBy = "lesfactures")
     private List<Produit> lesprduits;
-    public Devis()
+
+    public Facture()
     {
+
     }
 
-    public Devis(String libelle, String description) {
+    public Facture(String libelle, String description) {
         this.libelle = libelle;
         this.description = description;
     }
@@ -71,12 +72,12 @@ public class Devis implements Serializable {
         this.description = description;
     }
 
-    public Datee getDatedevis() {
-        return datedevis;
+    public Datee getDatefacture() {
+        return datefacture;
     }
 
-    public void setDatedevis(Datee datedevis) {
-        this.datedevis = datedevis;
+    public void setDatefacture(Datee datefacture) {
+        this.datefacture = datefacture;
     }
 
     public Utilisateur getUtilisateur() {
@@ -109,5 +110,10 @@ public class Devis implements Serializable {
 
     public void setLesprduits(List<Produit> lesprduits) {
         this.lesprduits = lesprduits;
+    }
+
+    @Override
+    public String toString() {
+        return libelle;
     }
 }

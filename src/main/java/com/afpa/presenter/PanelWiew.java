@@ -1,4 +1,4 @@
-package com.afpa.control;
+package com.afpa.presenter;
 
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.ToggleEvent;

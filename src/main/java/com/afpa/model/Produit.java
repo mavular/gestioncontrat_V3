@@ -2,7 +2,7 @@ package com.afpa.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "produit")
@@ -29,16 +29,24 @@ public class Produit implements Serializable{
     @Column(name = "devise")
     private String devise;
     @Column(name = "prixunitaire")
-    private BigDecimal prixunitaire;
+    private float prixunitaire;
     @Column(name = "tva")
-    private BigDecimal tva;
+    private float tva;
+    @ManyToMany
+    @JoinTable(name = "facturer", joinColumns = @JoinColumn(name ="id"),
+            inverseJoinColumns = @JoinColumn(name = "numero"))
+    private List<Facture> lesfactures;
+    @ManyToMany
+    @JoinTable(name = "composer", joinColumns = @JoinColumn(name ="id"),
+            inverseJoinColumns = @JoinColumn(name = "numero"))
+    private List<Devis> lesdevis;
 
     public Produit()
     {
 
     }
 
-    public Produit(Integer id, String nom, String description, Integer quantite, String devise, BigDecimal prixunitaire, BigDecimal tva) {
+    public Produit(Integer id, String nom, String description, Integer quantite, String devise, float prixunitaire, float tva) {
         this.id = id;
         this.nom = nom;
         this.description = description;
@@ -46,6 +54,7 @@ public class Produit implements Serializable{
         this.devise = devise;
         this.prixunitaire = prixunitaire;
         this.tva = tva;
+
     }
 
     public Integer getId() {
@@ -88,20 +97,36 @@ public class Produit implements Serializable{
         this.devise = devise;
     }
 
-    public BigDecimal getPrixunitaire() {
+    public float getPrixunitaire() {
         return prixunitaire;
     }
 
-    public void setPrixunitaire(BigDecimal prixunitaire) {
+    public void setPrixunitaire(float prixunitaire) {
         this.prixunitaire = prixunitaire;
     }
 
-    public BigDecimal getTva() {
+    public float getTva() {
         return tva;
     }
 
-    public void setTva(BigDecimal tva) {
+    public void setTva(float tva) {
         this.tva = tva;
+    }
+
+    public List<Facture> getLesfactures() {
+        return lesfactures;
+    }
+
+    public void setLesfactures(List<Facture> lesfactures) {
+        this.lesfactures = lesfactures;
+    }
+
+    public List<Devis> getLesdevis() {
+        return lesdevis;
+    }
+
+    public void setLesdevis(List<Devis> lesdevis) {
+        this.lesdevis = lesdevis;
     }
 
     @Override

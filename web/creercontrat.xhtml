@@ -18,72 +18,108 @@
     </div>
     <p>
         <a href="accueil.xhtml">Retour Accueil</a><br/>
-        <a href="modelecontrat.xhtml">Voir un modèle de Contrat</a>
-    </p>
-    <p style="color: #c82333">
+        <a href="modelecontrat.xhtml">Voir un modèle de Contrat</a><br/>
         <a href="affichagecontrat.xhtml">Mon Contrat</a>
     </p>
+    <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+    <h:panelGroup id="connect">
+
+
+        <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+        <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+        <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+        <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+    </h:panelGroup>
     <div class="contents">
     <div class="row">
     <div class="col-lg-12">
-        <h1 align="center"><i>Contrat de : <h:outputText style="color: blue" value="#{contratView.titre}" /></i></h1><br/>
-
+        <h1 align="center"><i>Contrat de : <h:outputText style="color: blue" value="#{contratView.contrat.libelle}" /></i></h1><br/>
 
         <h:form>
-
             <p:fragment>
                 <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="typecontrat" value="Type de contrat: *" />
+                    <p:inputText id="typecontrat" value="#{contratView.contrat.typecontrat.libelle}" label="Type de contrat" />
                     <h:outputLabel for="titre" value="Titre: *" />
-                    <p:inputText id="titre" value="#{contratView.titre}" required="true" label="Titre" />
-                    <h:outputLabel for="nom" value="Nom (votre société):" />
-                    <p:inputText id="nom" value="#{contratView.nom}" required="true" label="Nom (votre société)"/>
-                    <h:outputLabel for="capital" value="Capital: *" />
-                    <p:inputText id="capital" value="#{contratView.capital}" required="true" label="Capital" />
-                    <h:outputLabel for="adresse" value="Adresse: *" />
-                    <p:inputText id="adresse" value="#{contratView.adresse}" required="true" label="Adresse" />
-                    <h:outputLabel for="villederegistre" value="Ville de Régistre :" />
-                    <p:inputText id="villederegistre" value="#{contratView.villederegistre}" required="true" label="Ville de Régistre"/>
-                    <h:outputLabel for="numeroderegistre" value="Numéro de Régistre :" />
-                    <p:inputText id="numeroderegistre" value="#{contratView.numeroderegistre}" required="true" label="Numéro de Régistre"/>
-                    <h:outputLabel for="representant" value="Représentant: *" />
-                    <p:inputText id="representant" value="#{contratView.representant}" required="true" label="Représentant" />
+                    <p:inputText id="titre" value="#{contratView.contrat.libelle}" label="Titre" />
+                    <h:outputLabel for="description" value="Description du Contrat: *" />
+                    <p:inputText id="description" value="#{contratView.contrat.description}" label="Description du Contrat" />
 
-                    <h:outputLabel for="nomclient" value="Nom société cliente :" />
-                    <p:inputText id="nomclient" value="#{contratView.nomClient}" required="true" label="Nom société cliente"/>
+                    <h:outputLabel for="nom" value="Nom (votre société):" />
+                    <p:inputText id="nom" value="#{contratView.contrat.prestataire.nom}" label="Nom (votre société)" />
+                    <h:outputLabel for="votrequalification" value="Qualification (votre société): *" />
+                    <p:inputText id="votrequalification" value="#{contratView.contrat.prestataire.qualification}" label="Qualification (votre société)" />
+                    <h:outputLabel for="numerorue" value="N° et Rue (Votre Adresse): *" />
+                    <p:inputText id="numerorue" value="#{contratView.contrat.prestataire.numerorue}" label="N° et Rue (Votre Adresse)" />
+                    <h:outputLabel for="cp" value="CP : *" />
+                    <p:inputText id="cp" value="#{contratView.contrat.prestataire.cp}" label="CP" />
+                    <h:outputLabel for="ville" value="Ville :" />
+                    <p:inputText id="ville" value="#{contratView.contrat.prestataire.ville}" label="Ville" />
+                    <h:outputLabel for="pays" value="Pays :" />
+                    <p:inputText id="pays" value="#{contratView.contrat.prestataire.pays}" label="Pays" />
+                    <h:outputLabel for="telephone" value="Téléphone : *" />
+                    <p:inputText id="telephone" value="#{contratView.contrat.prestataire.telephone}" label="Téléphone" />
+                    <h:outputLabel for="email" value="E-mail :" />
+                    <p:inputText id="email" value="#{contratView.contrat.prestataire.email}" label="E-mail" />
+                    <h:outputLabel for="representant" value="Votre Représentant : *" />
+                    <p:inputText id="representant" value="#{contratView.contrat.prestataire.representant}" placeholder="Nom / qualité" label="Votre Représentant" />
+                    <h:outputLabel for="siret" value="N° Siret : *" />
+                    <p:inputText id="siret" value="#{contratView.contrat.prestataire.siret}" label="N° Siret" />
+                    <h:outputLabel for="capital" value="Capital (votre société): *" />
+                    <p:inputText id="capital" value="#{contratView.capital}" label="Capital (votre société)" />
+                    <h:outputLabel for="villederegistre" value="Ville de Régistre :" />
+                    <p:inputText id="villederegistre" value="#{contratView.villederegistre}" label="Ville de Régistre"/>
+                    <h:outputLabel for="numeroderegistre" value="Numéro de Régistre :" />
+                    <p:inputText id="numeroderegistre" value="#{contratView.numeroderegistre}" label="Numéro de Régistre"/>
+
+                    <h:outputLabel for="nomClient" value="Nom (société Cliente): *" />
+                    <p:inputText id="nomClient" value="#{contratView.contrat.client.nom}" label="Nom (société Cliente)" />
+                    <h:outputLabel for="qualification" value="Qualification Cliente: *" />
+                    <p:inputText id="qualification" value="#{contratView.contrat.client.qualification}" label="Qualification Cliente" />
+                    <h:outputLabel for="numerorueClient" value="N° et Rue (Adresse du Client) : *" />
+                    <p:inputText id="numerorueClient" value="#{contratView.contrat.client.numerorue}" label="N° et Rue (Adresse du Client)" />
+                    <h:outputLabel for="cpClient" value="CP (Client) :" />
+                    <p:inputText id="cpClient" value="#{contratView.contrat.client.cp}" label="CP (Client)" />
+                    <h:outputLabel for="villeClient" value="Ville (Client) :" />
+                    <p:inputText id="villeClient" value="#{contratView.contrat.client.ville}" label="Ville (Client)" />
+                    <h:outputLabel for="paysClient" value="Pays (Client) : *" />
+                    <p:inputText id="paysClient" value="#{contratView.contrat.client.pays}" label="Pays (Client)" />
+                    <h:outputLabel for="telephoneClient" value="Téléphone (Client) : *" />
+                    <p:inputText id="telephoneClient" value="#{contratView.contrat.client.telephone}" label="Téléphone (Client)" />
+                    <h:outputLabel for="emailClient" value="E-mail (Client) : *" />
+                    <p:inputText id="emailClient" value="#{contratView.contrat.client.email}" label="E-mail (Client)" />
+                    <h:outputLabel for="representantclient" value="Représentant Client : *" />
+                    <p:inputText id="representantclient" value="#{contratView.contrat.client.representant}" placeholder="Nom / qualité" label="Représentant Client" />
+                    <h:outputLabel for="siretclient" value="N° Siret Client: *" />
+                    <p:inputText id="siretclient" value="#{contratView.contrat.client.siret}" label="N° Siret Client" />
                     <h:outputLabel for="capitalClient" value="Capital (société Cliente): *" />
-                    <p:inputText id="capitalClient" value="#{contratView.capitalClient}" required="true" label="Capital (société Client)" />
-                    <h:outputLabel for="adresseClient" value="Adresse du Client: *" />
-                    <p:inputText id="adresseClient" value="#{contratView.adresseClient}" required="true" label="Adresse du Client" />
+                    <p:inputText id="capitalClient" value="#{contratView.capitalClient}" label="Capital (société Client)" />
                     <h:outputLabel for="villederegistreClient" value="Ville de Régistre du Client :" />
-                    <p:inputText id="villederegistreClient" value="#{contratView.villederegistreClient}" required="true" label="Ville de Régistre du Client"/>
+                    <p:inputText id="villederegistreClient" value="#{contratView.villederegistreClient}" label="Ville de Régistre du Client" />
                     <h:outputLabel for="numeroderegistreClient" value="Numéro de Régistre du Client :" />
-                    <p:inputText id="numeroderegistreClient" value="#{contratView.numeroderegistreClient}" required="true" label="Numéro de Régistre du Client"/>
-                    <h:outputLabel for="representantClient" value="Représentant du Client: *" />
-                    <p:inputText id="representantClient" value="#{contratView.representantClient}" required="true" label="Représentant du Client" />
+                    <p:inputText id="numeroderegistreClient" value="#{contratView.numeroderegistreClient}" label="Numéro de Régistre du Client" />
+
+                    <h:outputLabel for="datedebut" value="Date de debut de contrat: *" />
+                    <p:calendar id="datedebut" value="#{contratView.datededebut.date}" label="Date de debut de contrat" pattern="yyyy-MM-dd" locale="fr" />
+                    <h:outputLabel for="datefin" value="Date de fin de contrat: *" />
+                    <p:calendar id="datefin" value="#{contratView.datedefin.date}" label="Date de fin de contrat" pattern="yyyy-MM-dd" locale="fr" />
+                    <h:outputLabel for="datedesignature" value="Date de signature: *" />
+                    <p:calendar id="datedesignature" value="#{contratView.datedesignature.date}" label="Date de signature" pattern="yyyy-MM-dd" locale="fr" />
 
                     <h:outputLabel for="sommeforfaitaire" value="Somme forfaitaire: *" />
-                    <p:inputText id="sommeforfaitaire" value="#{contratView.sommeforfaitaire}" required="true" label="Somme forfaitaire" />
-                    <h:outputLabel for="dureecontrat" value="Durée du contrat: *" />
-                    <p:inputText id="dureecontrat" value="#{contratView.dureecontrat}" required="true" label="Durée du contrat" />
-                    <h:outputLabel for="datedebut" value="Date de debut de contrat: *" />
-                    <p:inputText id="datedebut" value="#{contratView.datedebut}" label="Date de debut de contrat" />
-                    <h:outputLabel for="datefin" value="Date de fin de contrat: *" />
-                    <p:inputText id="datefin" value="#{contratView.datefin}" label="Date de fin de contrat" />
-
-                    <h:outputLabel for="datedelaipreetudeClient" value="Date delai préétude Client: *" />
-                    <p:inputText id="datedelaipreetudeClient" value="#{contratView.datedelaipreetudeClient}" label="Date delai préétude Client" />
-                    <h:outputLabel for="datedelaicahierdescharges" value="Date delai du cahier des charges:" />
-                    <p:inputText id="datedelaicahierdescharges" value="#{contratView.datedelaicahierdescharges}" label="Date delai du cahier des charges"/>
-                    <h:outputLabel for="datedelairapport" value="Date delai du rapport: *" />
-                    <p:inputText id="datedelairapport" value="#{contratView.datedelairapport}" label="Date delai du rapport" />
-                    <h:outputLabel for="datedelaiprerapport" value="Date delai prérapport: *" />
-                    <p:inputText id="datedelaiprerapport" value="#{contratView.datedelaiprerapport}" label="Date delai prérapport" />
-                    <h:outputLabel for="datedelairapportterminal" value="Date delai rapport terminal :" />
-                    <p:inputText id="datedelairapportterminal" value="#{contratView.datedelairapportterminal}" label="Date delai rapport terminal"/>
+                    <p:inputText id="sommeforfaitaire" value="#{contratView.sommeforfaitaire}" label="Somme forfaitaire" />
                     <h:outputLabel for="fraisparjourderetard" value="Frais par jour de retard :" />
-                    <p:inputText id="fraisparjourderetard" value="#{contratView.fraisparjourderetard}" required="true" label="Frais par jour de retard"/>
+                    <p:inputText id="fraisparjourderetard" value="#{contratView.fraisparjourderetard}" label="Frais par jour de retard"/>
+                    <h:outputLabel for="devise" value="Devise: *" />
+                    <p:inputText id="devise" value="#{contratView.devise}" />
+                    <h:outputLabel for="languecontrat" value="Langue de rédaction du contrat: *" />
+                    <p:inputText id="languecontrat" value="#{contratView.languecontrat}" label="Langue de rédaction du contrat" />
 
-                    <p:commandButton action="affichagecontrat.xhtml" value="Valider"/>
+
+                    <p:button outcome="affichagecontrat.xhtml" value="Voir le Contrat"/>
+                    <p:commandButton value="ENREGISTRER" actionListener="#{contratView.addContrat()}" label="Voir le Contrat" />
 
                 </h:panelGrid>
             </p:fragment>

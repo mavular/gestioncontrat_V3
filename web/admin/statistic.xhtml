@@ -15,6 +15,17 @@
     </ui:define>
 
     <ui:define name="content">
+        <p><h:outputText id="messages" value="#{controlUtilLogin.messages}"/></p>
+
+        <h:panelGroup id="connect">
+
+
+            <!--Bouton compte Administrateur : visible uniquement pour les admin -->
+            <p:button rendered="#{controlUtilLogin.getU().role eq 'admin'}" value="Administration" outcome="/admin/pageadministation.xhtml" icon="ui-icon-person"/>
+
+            <!--Bouton mes réservations : visible par les utilisateurs connectés -->
+            <p:button rendered="#{controlUtilLogin.getCurrentUtilisateur() != null}" value="Mes Activités" outcome="/protected/pageutilisateur.xhtml" icon="ui-icon-person"/>
+        </h:panelGroup>
 
         <h:form>
             <p:growl id="msgs" showDetail="true" autoUpdate="true"/>

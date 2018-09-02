@@ -1,5 +1,7 @@
 package com.afpa.model;
 
+import com.afpa.model.interfaces.Contratinterf;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -10,77 +12,66 @@ import java.util.List;
         @NamedQuery(name="Contrat.findAll", query = "SELECT c FROM Contrat c"),
         @NamedQuery(name="Contrat.findBynumero", query = "SELECT c FROM Contrat c WHERE c.numero = :numero"),
         @NamedQuery(name="Contrat.findBylibelle", query = "SELECT c FROM Contrat c WHERE c.libelle = :libelle"),
-        @NamedQuery(name="Contrat.findByprestataire", query = "SELECT c FROM Contrat c WHERE c.prestataire = :prestataire"),
-        @NamedQuery(name="Contrat.findByclient", query = "SELECT c FROM Contrat c WHERE c.client = :client"),
-        @NamedQuery(name="Contrat.findBytypecontrat", query = "SELECT c FROM Contrat c WHERE c.numero = :numero"),
+        @NamedQuery(name="Contrat.findBydescription", query = "SELECT c FROM Contrat c WHERE c.description = :description"),
         @NamedQuery(name="Contrat.findBydatededebut", query = "SELECT c FROM Contrat c WHERE c.datededebut = :datededebut"),
         @NamedQuery(name="Contrat.findBydatedefin", query = "SELECT c FROM Contrat c WHERE c.datedefin = :datedefin"),
         @NamedQuery(name="Contrat.findBydatedesignature", query = "SELECT c FROM Contrat c WHERE c.datedesignature = :datedesignature"),
-        //@NamedQuery(name= "Utilisateur.findAllContratForUser", query = "select c FROM Contrat c WHERE c.utilisateur = :utilisateur")
-        //@NamedQuery(name= "Utilisateur.findAllFactureForUser", query = "select f FROM Contrat f WHERE f.utilisateur = :utilisateur")
-        //@NamedQuery(name= "Utilisateur.findAllDevisForUser", query = "select d FROM Contrat d WHERE d.utilisateur = :utilisateur")
+        @NamedQuery(name="Contrat.findAllContratByUser", query = "SELECT c FROM Contrat c WHERE c.utilisateur = :utilisateur"),
+        @NamedQuery(name="Contrat.findAllContratByPrestataire", query = "SELECT c FROM Contrat c WHERE c.prestataire = :prestataire"),
+        @NamedQuery(name="Contrat.findAllContratByClient", query = "SELECT c FROM Contrat c WHERE c.client = :client"),
+        @NamedQuery(name="Contrat.findAllContratByTypecontrat", query = "SELECT c FROM Contrat c WHERE c.typecontrat = :typecontrat"),
+        @NamedQuery(name="Contrat.findAllAvenantForContrat", query = "select a FROM Avenant a WHERE a.contrat =:contrat")
 })
 
-public class Contrat implements Serializable{
-    
+public class Contrat implements Contratinterf, Serializable {
+
     @Id
-    @Column(name="id")
-    private Integer id;
-    @Column(name="numero")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numero;
     @Column(name = "libelle")
     private String libelle;
-    @Column(name = "prestataire")
-    private String prestataire;
-    @Column(name = "client")
-    private String client;
-    @Column(name = "descriptif")
-    private String descriptif;
-    @Column(name = "modalites")
-    private String modalites;
-    //@Column(name = "")
-    //private String ;
+    @Column(name = "description")
+    private String description;
     @ManyToOne
-    @JoinColumn(name="id_typecontrat")
+    @JoinColumn(name = "date")
+    private Datee datededebut;
+    @ManyToOne
+    @JoinColumn(name = "date_finir")
+    private Datee datedefin;
+    @ManyToOne
+    @JoinColumn(name = "date_approuver")
+    private Datee datedesignature;
+    @ManyToOne
+    @JoinColumn(name = "id")
     private Typecontrat typecontrat;
     @ManyToOne
-    @JoinColumn(name="date")
-    private Date datededebut;
+    @JoinColumn(name = "pseudo")
+    private Utilisateur utilisateur;
     @ManyToOne
-    @JoinColumn(name="date_finir")
-    private Date datedefin;
+    @JoinColumn(name = "id_entreprise")
+    private Entreprise prestataire;
     @ManyToOne
-    @JoinColumn(name="date_approuver")
-    private Date datedesignature;
+    @JoinColumn(name = "id_entreprise_concerner")
+    private Entreprise client;
     @OneToMany(mappedBy = "contrat")
-    private List<Avenant> listdesavenants;
+    private List<Avenant> listavenant;
+
 
     public Contrat() {
 
     }
 
-    public Contrat(Integer id, Integer numero, String libelle, String prestataire, String client, String descriptif, String modalites, Typecontrat typecontrat, Date datededebut, Date datedefin, Date datedesignature) {
-        this.id = id;
-        this.numero = numero;
+    public Contrat(String libelle, String description, Datee datededebut, Datee datedefin, Datee datedesignature, Entreprise prestataire, Entreprise client) {
         this.libelle = libelle;
-        this.prestataire = prestataire;
-        this.client = client;
-        this.descriptif = descriptif;
-        this.modalites = modalites;
-        this.typecontrat = typecontrat;
+        this.description = description;
         this.datededebut = datededebut;
         this.datedefin = datedefin;
         this.datedesignature = datedesignature;
+        this.prestataire = prestataire;
+        this.client = client;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @Override
     public Integer getNumero() {
         return numero;
     }
@@ -89,6 +80,7 @@ public class Contrat implements Serializable{
         this.numero = numero;
     }
 
+    @Override
     public String getLibelle() {
         return libelle;
     }
@@ -97,36 +89,36 @@ public class Contrat implements Serializable{
         this.libelle = libelle;
     }
 
-    public String getPrestataire() {
-        return prestataire;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrestataire(String prestataire) {
-        this.prestataire = prestataire;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getClient() {
-        return client;
+    public Datee getDatededebut() {
+        return datededebut;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setDatededebut(Datee datededebut) {
+        this.datededebut = datededebut;
     }
 
-    public String getDescriptif() {
-        return descriptif;
+    public Datee getDatedefin() {
+        return datedefin;
     }
 
-    public void setDescriptif(String descriptif) {
-        this.descriptif = descriptif;
+    public void setDatedefin(Datee datedefin) {
+        this.datedefin = datedefin;
     }
 
-    public String getModalites() {
-        return modalites;
+    public Datee getDatedesignature() {
+        return datedesignature;
     }
 
-    public void setModalites(String modalites) {
-        this.modalites = modalites;
+    public void setDatedesignature(Datee datedesignature) {
+        this.datedesignature = datedesignature;
     }
 
     public Typecontrat getTypecontrat() {
@@ -137,27 +129,36 @@ public class Contrat implements Serializable{
         this.typecontrat = typecontrat;
     }
 
-    public Date getDatededebut() {
-        return datededebut;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setDatededebut(Date datededebut) {
-        this.datededebut = datededebut;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
-    public Date getDatedefin() {
-        return datedefin;
+    public Entreprise getPrestataire() {
+        return prestataire;
     }
 
-    public void setDatedefin(Date datedefin) {
-        this.datedefin = datedefin;
+    public void setPrestataire(Entreprise prestataire) {
+        this.prestataire = prestataire;
     }
 
-    public Date getDatedesignature() {
-        return datedesignature;
+    public Entreprise getClient() {
+        return client;
     }
 
-    public void setDatedesignature(Date datedesignature) {
-        this.datedesignature = datedesignature;
+    public void setClient(Entreprise client) {
+        this.client = client;
     }
+
+    public List<Avenant> getListavenant() {
+        return listavenant;
+    }
+
+    public void setListavenant(List<Avenant> listavenant) {
+        this.listavenant = listavenant;
+    }
+
 }

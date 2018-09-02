@@ -3,6 +3,8 @@ package com.afpa.presenter;
 import com.afpa.access.AccessDb;
 import com.afpa.model.Contrat;
 import com.afpa.model.DataColumn;
+import com.afpa.model.Typecontrat;
+import com.afpa.model.Utilisateur;
 import org.primefaces.event.RowEditEvent;
 
 import javax.annotation.PostConstruct;
@@ -36,7 +38,8 @@ public class ServiceAdmin implements Serializable {
     }
 
     @PostConstruct
-    public void init(){
+    public void init()
+    {
         testObject = false;
     }
 
@@ -87,20 +90,88 @@ public class ServiceAdmin implements Serializable {
     }
 
     public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled");
+        FacesMessage msg = new FacesMessage("Edition Ennulée");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edited");
+        FacesMessage msg = new FacesMessage("C'est bien Editer");
         FacesContext.getCurrentInstance().addMessage(null, msg);
 
         dba.maj(event.getObject());
     }
 
-    /*public <T> void deleteRow(T t){
+    public <T> void deleteRow(T t){
 
-        //****** DELETE + TEST RESERVATION SUR SALLE AVANT DELETE ************
+        //****** SUPPRESSION + TEST CONTRATS pour Type de Contrat AVANT Suppression ************
+        if(t.getClass().getSimpleName().equals("Typecontrat")){
+
+            if(dba.getAllContratForType((Contrat) t).stream().anyMatch(k -> k.getLibelle()!=null)){
+                FacesMessage msg = new FacesMessage("Erreur","Il existe au moins un contrat sur ce type de contrat");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }
+            else {
+                FacesMessage msg = new FacesMessage("OK","Type de contrat supprimé");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+                dba.delete(t);
+                dataRemplir();
+            }
+            }
+                else if(t.getClass().getSimpleName().equals("Utilisateur")){
+
+                if(dba.getAllContratForUser((Utilisateur) t).stream().anyMatch(k -> k.getNumero()!=null)){
+                FacesMessage msg = new FacesMessage("Erreur","Il existe au moins un contrat sur cet Utilisateur");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+                }
+                else {
+                FacesMessage msg = new FacesMessage("OK","Utilisateur delete");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+                dba.delete(t);
+                dataRemplir();
+                }
+                }
+
+                else {
+                dba.delete(t);
+                dataRemplir();
+                }
+
+                }
+
+public void ajouterLigne(){
+        Typecontrat t = new Typecontrat();
+        mydata.add(t);
+        }
+
+public  void test(){
+        if(selection.getSimpleName().equals("Typecontrat")){
+        testObject = true;
+        }
+        else {
+        testObject = false;
+        }
+        }
+
+public boolean getTestObject() {
+        return testObject;
+        }
+
+public void setTestObject(boolean testObject) {
+        this.testObject = testObject;
+        }
+
+    public List<Contrat> getListContrat() {
+        return listContrat;
+    }
+
+    public void setListContrat(List<Contrat> listContrat) {
+        this.listContrat = listContrat;
+    }
+}
+/*
+ public <T> void deleteRow(T t){
+
+        // DELETE + TEST RESERVATION SUR SALLE AVANT DELETE
         if(t.getClass().getSimpleName().equals("Salle")){
 
                 if(dba.findAllForSalle((Salle) t).stream().anyMatch(r -> r.getDateTimeFin().after(new Date()) && !r.isEtat())) {
@@ -136,35 +207,4 @@ public class ServiceAdmin implements Serializable {
                 }
 
                 }
-
-public void ajouterLigne(){
-        Salle s = new Salle();
-        mydata.add(s);
-        }
-
-public  void test(){
-        if(selection.getSimpleName().equals("Salle")){
-        testObject = true;
-        }
-        else {
-        testObject = false;
-        }
-        }
 */
-public boolean getTestObject() {
-        return testObject;
-        }
-
-public void setTestObject(boolean testObject) {
-        this.testObject = testObject;
-        }
-
-    public List<Contrat> getListContrat() {
-        return listContrat;
-    }
-
-    public void setListContrat(List<Contrat> listContrat) {
-        this.listContrat = listContrat;
-    }
-}
-        

@@ -2,7 +2,7 @@ package com.afpa.presenter;
 
 import com.afpa.access.AccessDb;
 import com.afpa.model.Utilisateur;
-import org.primefaces.event.FlowEvent;
+import com.google.common.hash.Hashing;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 
 @Named
@@ -33,37 +34,21 @@ public class ServiceUtilisateur implements Serializable
     public void addUtilisateur()
     {
         FacesMessage msg;
+        this.u.setMotdepasse(this.mdp);
+
         if( adb.persist(u)){
-            msg = new FacesMessage("Successful", "Utilisateur " + u.getPseudo() + " créé correctement");
+            msg = new FacesMessage("BRAVO", " L'Utilisateur " + u.getPseudo() + " est inscrit");
         } else {
-            msg = new FacesMessage("Erreur", "Erreur lors de la création de l'utilisateur");
+            msg = new FacesMessage("ERREUR", "Erreur lors de la création de l'utilisateur");
         }
+
         FacesContext.getCurrentInstance().addMessage(null, msg);
 
-    }
-
-    public String onFlowProcess(FlowEvent event)
-    {
-        if(passer) {
-            passer = false;   //fait un reset dans le cas ou l'utilisateur fait un retour
-            return "confirm";
-        }
-        else {
-            return event.getNewStep();
-        }
     }
 
     public Utilisateur getUfromDatabase()
     {
         return adb.recherche(Utilisateur.class,((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal().getName());
-    }
-
-    public Utilisateur getU() {
-        return u;
-    }
-
-    public void setU(Utilisateur u) {
-        this.u = u;
     }
 
     public String getPseudo() {
@@ -79,7 +64,9 @@ public class ServiceUtilisateur implements Serializable
     }
 
     public void setMdp(String mdp) {
-        this.mdp = mdp;
+        this.mdp = Hashing.sha256()
+                .hashString(mdp, StandardCharsets.UTF_8)
+                .toString();
     }
 
     public boolean isPasser() {
@@ -103,5 +90,12 @@ public class ServiceUtilisateur implements Serializable
         return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getUserPrincipal();
     }
 
+    public Utilisateur getU() {
+        return u;
+    }
+
+    public void setU(Utilisateur u) {
+        this.u = u;
+    }
 }
 

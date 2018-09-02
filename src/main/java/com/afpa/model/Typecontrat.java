@@ -5,42 +5,36 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table
+@Table (name = "typecontrat")
 @NamedQueries({
         @NamedQuery(name = "Typecontrat.findAll",query = "select t from Typecontrat t"),
-        @NamedQuery(name = "Typecontrat.findAllbylibelle",query = "select t from Typecontrat t where t.libelle=:libelle")
+        @NamedQuery(name = "Typecontrat.findAllbylibelle",query = "select t from Typecontrat t where t.libelle=:libelle"),
+        @NamedQuery(name = "Typecontrat.findAllContratForType", query = "select c FROM Contrat c WHERE c.typecontrat =:typecontrat")
 })
 public class Typecontrat implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private Integer id;
     @Column(name = "libelle")
     private String libelle;
-    @Column(name = "descriptif")
-    private String descriptif;
-    @Column(name = "modalites")
-    private String modalites;
     @OneToMany(mappedBy = "typecontrat")
-    private List<Contrat> listdecontrat;
+    private List<Contrat> listcontrats;
 
     public Typecontrat()
     {
 
     }
 
-    public Typecontrat(String libelle, String descriptif, String modalites, List<Contrat> listdecontrat) {
+    public Typecontrat(String libelle) {
+        this.id = id;
         this.libelle = libelle;
-        this.descriptif = descriptif;
-        this.modalites = modalites;
-        this.listdecontrat = listdecontrat;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,28 +46,12 @@ public class Typecontrat implements Serializable{
         this.libelle = libelle;
     }
 
-    public String getDescriptif() {
-        return descriptif;
+    public List<Contrat> getListcontrats() {
+        return listcontrats;
     }
 
-    public List<Contrat> getListdecontrat() {
-        return listdecontrat;
-    }
-
-    public void setListdecontrat(List<Contrat> listdecontrat) {
-        this.listdecontrat = listdecontrat;
-    }
-
-    public void setDescriptif(String descriptif) {
-        this.descriptif = descriptif;
-    }
-
-    public String getModalites() {
-        return modalites;
-    }
-
-    public void setModalites(String modalites) {
-        this.modalites = modalites;
+    public void setListcontrats(List<Contrat> listcontrats) {
+        this.listcontrats = listcontrats;
     }
 
     @Override

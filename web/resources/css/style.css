@@ -158,6 +158,13 @@ html{
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
+/*.content{
+    padding: 20px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}*/
 
 .login{
     text-align: right;

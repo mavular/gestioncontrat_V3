@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/jboss/weld/weld-core/2.4.7.Final/weld-core-2.4.7.Final.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/weld/weld-core/2.4.7.Final/weld-core-2.4.7.Final-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/jboss/weld/weld-core/2.4.7.Final/weld-core-2.4.7.Final-sources.jar!/" />
     </SOURCES>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>PAGE D'ADMINISTRATION GENERALE</title>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+<div class="ui-g global">
+<div class="row">
+    <div class="ui-g-12 bandeau">
+        <div class="row">
+            <div class="ui-g-12 header">
+                <div class="row" align="center" style="width: 90%">
+                    <div class="ui-g-2 menusecteur1">
+                        <p style="color: white"> GESTION<br/>_CONTRATS </p>
+                    </div>
+                    <div class="ui-g-1">
+                    </div>
+                    <div class="ui-g-9">
+                        <h1>SITE DE GESTION DE CONTRATS</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div align="center" style="color:orange;font-family:cursive" >
+        <h1>TOUTES LES FONCTIONALITES DE L'APPLICATION WEB Gestion_Contrat</h1>
+    </div>
+    <div class="ui-g-12">
+        <div class="row">
+            <div class="ui-g-4">
+                <p><a href="../accueil.xhtml">Retour Accueil</a><br/>
+                <a href="../seconnecter.xhtml">Se connecter</a><br/>
+                <a href="../sinscrire.xhtml">S'INSCRIRE?</a><br/>
+                <a href="statistic.xhtml">page admin</a><br/>
+                <a href="../protected/pageutilisateur.xhtml">page utilisateur</a><br/>
+                <a href="../produitsdevis.xhtml">remplissage de produits (Devis)</a><br/>
+                <a href="../produitsfacture.xhtml">remplissage de produits (Facture)</a>
+                </p>
+            </div>
+            <div class="ui-g-4">
+                <p><a href="../creercontrat.xhtml" title="retour page remplir un contrat">créer un Contrat</a><br/>
+                    -- <a href="../affichagecontrat.xhtml">mon Contrat</a><br/>
+                    <a href="../creerfacture.xhtml" title="retour page remplir une facture">créer une Facture</a><br/>
+                    -- <a href="../affichagefacture.xhtml">ma Facture</a><br/>
+                    <a href="../creerdevis.xhtml" title="retour page remplir un devis">céer un Devis</a><br/>
+                    -- <a href="../affichagedevis.xhtml">mon Devis</a>
+                </p>
+            </div>
+            <div class="ui-g-4">
+                <p>
+                <a href="../modelecontrat.xhtml" title="Voir aussi un modèle de Contrat">Modèle de Contrat</a><br/>
+                <a href="../modelefacture.xhtml" title="Voir aussi un modèle de Facture">Modèle de Facture</a><br/>
+                <a href="../modeledevis.xhtml" title="Voir aussi un modèle de Devis">Modèle de Devis</a><br/>
+                <a href="../mesproduits.xhtml">Liste de produits</a><br/>
+                <a href="../protected/mesdevis.xhtml" title="Voir tous mes devis">liste de devis</a><br/>
+                <a href="../protected/mescontrats.xhtml" title="Voir tous mes contrats">liste de Contrat</a><br/>
+                <a href="../protected/mesfactures.xhtml" title="Voir toutes mes factures">liste de Facture</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="row">
+            <p><a href="../information.xhtml">Toutes les informations</a></p>
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <div class="row">
+            <div align="center" style="height:auto">
+
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" autoUpdate="true"/>
+
+                    <p:selectOneMenu value="#{serviceAdmin.selection}" converter="#{classConverter}">
+                        <f:selectItems value="#{serviceAdmin.listClass}" var="c" itemLabel="#{c.simpleName}"/>
+                        <p:ajax listener="#{serviceAdmin.dataRemplir}" update="@form"/>
+                    </p:selectOneMenu>
+                    <p:commandButton id="cb" value="Ajouter une ligne" rendered="#{serviceAdmin.testObject != false}" actionListener="#{serviceAdmin.ajouterLigne}" update="@form" />
+
+                    <p:dataTable value="#{serviceAdmin.mydata}" var="c" id="dt" editable="true">
+
+                        <p:ajax event="rowEdit"  listener="#{serviceAdmin.onRowEdit}"  update="dt"/>
+                        <p:ajax event="rowEditCancel" listener="#{serviceAdmin.onRowCancel}" update="dt" />
+
+
+                        <p:columns value="#{serviceAdmin.columns}" var="column" headerText="#{column.header}">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText  value="#{c[column.header]}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{c[column.header]}"/>
+                                </f:facet>
+
+                            </p:cellEditor>
+                        </p:columns>
+
+                        <p:column style="width:50px">
+                            <f:facet name="header">Edition</f:facet>
+                            <p:rowEditor />
+                        </p:column>
+                        <p:column>
+
+                            <f:facet name="header">Action</f:facet>
+                            <p:commandButton value="Delete" actionListener="#{serviceAdmin.deleteRow(c)}" update="dt">
+                                <p:confirm header="Confirmation" message="Etes-vous sûr(e) d'effectuer cette action ?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+
+                    <!--Message de confirmation de suppression-->
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+
+                </h:form>
+
+            </div>
+        </div>
+    </div>
+    <div class="ui-g fin">
+        <div style="float: left ; color: darkblue; padding: 10px"> Réglémentations
+            <ol>
+                <li><a href="#" title="Voir la législation sur les contrats">A propos des contrats</a></li>
+                <li><a href="#" title="Voir la réglémentation de notre site">La Réglémentation</a></li>
+                <li><a href="#Adresse">Nos activités</a></li>
+            </ol>
+        </div>
+        <div style="float: left; color: red; padding: 10px"> Nos partenaires sociaux
+            <ul>
+                <li><a href="https://fr-fr.facebook.com/" title="Connexion facebook" target="_blank">Facebook</a></li>
+                <li><a href="#" >Twiter</a></li>
+                <li><a href="https://cyralex21.visualstudio.com/INTEXO/_backlogs?level=Features&amp;showParents=false&amp;_a=backlog" title="Product backlog" target="_blank">VisualStudio</a></li>
+
+            </ul>
+        </div>
+        <div style="float:right; padding: 10px; color: chocolate" id="Contact">Nous Contacter
+            <ul>
+                <li><a href="#" name="NOUS CONTACTER" title="11 rue d'Iena, 89000 Auxerre">Adresse</a></li>
+                <li><a href="mailto:elkyach@yahoo.fr" title="elkyach@yahoo.fr">E-mail</a></li>
+                <li><a href="#" title="0669536416">Téléphone</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+</h:body>
+</html>
+
